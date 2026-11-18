@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — Page Not Found | Yuvajana Sammelanam 2026</title>
+  <meta name="robots" content="noindex, follow" />
+  <meta name="theme-color" content="#072338" />
+
+  <!-- Favicon (Matches index.html) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23072338'/%3E%3Cpolygon points='32,8 39,25 56,32 39,39 32,56 25,39 8,32 25,25' fill='none' stroke='%2300ACC8' stroke-width='3'/%3E%3Ccircle cx='32' cy='32' r='8' fill='%23C9A24B'/%3E%3C/svg%3E" />
+
+  <!-- Google Fonts (Matches index.html) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --color-teal: #00ACC8;
+      --color-teal-dark: #008299;
+      --color-deep-blue: #072338;
+      --color-gold: #C9A24B;
+      --color-text-secondary: #A8C5D6;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: radial-gradient(circle at 50% 35%, #0D3D5E 0%, #072338 65%, #041624 100%);
+      color: #FFFFFF;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+      padding: 2rem 1.5rem;
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Subtle Geometric Background */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Cg fill='none' stroke='%2300ACC8' stroke-width='0.8' stroke-opacity='0.1'%3E%3Cpolygon points='48,6 59,37 90,48 59,59 48,90 37,59 6,48 37,37'/%3E%3Ccircle cx='48' cy='48' r='9' stroke='%23C9A24B' stroke-opacity='0.16'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: 96px 96px;
+      pointer-events: none;
+    }
+
+    /* Top Minimal Brand */
+    .top-brand {
+      position: relative;
+      z-index: 1;
+      padding-top: 0.5rem;
+    }
+
+    .logo-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #FFFFFF;
+      padding: 0.45rem 1rem;
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .logo-pill img {
+      height: 38px;
+      width: auto;
+      display: block;
+    }
+
+    /* Center Content (Perfectly Aligned) */
+    .center-content {
+      position: relative;
+      z-index: 1;
+      max-width: 480px;
+      width: 100%;
+      margin: auto 0;
+      padding: 2rem 0;
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .error-number {
+      font-family: var(--font-display);
+      font-size: clamp(5.5rem, 18vw, 8.5rem);
+      font-weight: 700;
+      line-height: 0.9;
+      letter-spacing: 0.03em;
+      background: linear-gradient(180deg, #FFFFFF 20%, #8FD8E8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+    }
+
+    .gold-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      margin: 0 auto 1.35rem;
+    }
+
+    .gold-divider span {
+      width: 48px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+    }
+
+    .error-heading {
+      font-family: var(--font-display);
+      font-size: clamp(1.65rem, 4.5vw, 2.15rem);
+      font-weight: 600;
+      color: #FFFFFF;
+      margin-bottom: 0.65rem;
+    }
+
+    .error-message {
+      font-size: 0.96rem;
+      line-height: 1.7;
+      color: var(--color-text-secondary);
+      margin-bottom: 2.1rem;
+    }
+
+    .home-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      padding: 0.85rem 1.85rem;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--color-teal) 0%, var(--color-teal-dark) 100%);
+      color: #FFFFFF;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.94rem;
+      letter-spacing: 0.01em;
+      box-shadow: 0 10px 26px rgba(0, 172, 200, 0.28);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .home-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px rgba(0, 172, 200, 0.38);
+    }
+
+    .home-btn:focus-visible {
+      outline: 3px solid var(--color-gold);
+      outline-offset: 3px;
+    }
+
+    /* Minimal Footer */
+    .bottom-meta {
+      position: relative;
+      z-index: 1;
+      font-size: 0.8rem;
+      color: rgba(168, 197, 214, 0.7);
+      letter-spacing: 0.03em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Logo Only (No extra header buttons) -->
+  <header class="top-brand">
+    <a href="index.html" class="logo-pill" aria-label="Wisdom Youth Home">
+      <img
+        src="Wisdom youth.png"
+        alt="Wisdom Youth"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';"
+      />
+      <span style="display:none; color:#072338; font-weight:700; font-size:0.95rem;">Wisdom Youth</span>
+    </a>
+  </header>
+
+  <!-- Centered 404 Content -->
+  <main class="center-content">
+    <h1 class="error-number">404</h1>
+
+    <div class="gold-divider" aria-hidden="true">
+      <span></span>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="#C9A24B">
+        <polygon points="12,2 15,9 22,12 15,15 12,22 9,15 2,12 9,9"/>
+      </svg>
+      <span></span>
+    </div>
+
+    <h2 class="error-heading">Page Not Found</h2>
+    <p class="error-message">
+      The page you are looking for doesn’t exist or may have been moved.
+    </p>
+
+    <a href="index.html" class="home-btn">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+      <span>Back to Home</span>
+    </a>
+  </main>
+
+  <!-- Minimal Footer -->
+  <footer class="bottom-meta">
+    Yuvajana Sammelanam 2026 &bull; Wisdom Youth, Kozhikode North District
+  </footer>
+
+</body>
+</html>
