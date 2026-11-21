@@ -74,6 +74,18 @@
         .logo-glow {
             filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.25));
         }
+        /* Smooth Floating Animation for Centered Main Logo */
+        @keyframes floatLogo {
+            0%, 100% {
+                transform: translateY(0px) scale(1);
+            }
+            50% {
+                transform: translateY(-7px) scale(1.02);
+            }
+        }
+        .animate-logo-float {
+            animation: floatLogo 3.6s ease-in-out infinite;
+        }
     </style>
 </head>
 <body class="bg-[#F4F7FA] text-slate-800 font-sans antialiased selection:bg-brandBlue-500 selection:text-white">
@@ -129,43 +141,45 @@
             <div class="max-w-lg md:max-w-3xl mx-auto">
                 
                 <!-- "Wisdom Youth presents" Pill Badge -->
-                <div class="inline-flex items-center gap-2 bg-white text-slate-800 px-3.5 py-1.5 rounded-full shadow-md mb-6">
-                    <img src="Wisdom youth.png" alt="Wisdom Youth" class="h-5 w-auto object-contain" onerror="this.onerror=null; this.src='https://placehold.co/80x25/00A3C4/FFFFFF?text=YOUTH';">
-                    <span class="text-xs font-semibold text-slate-600">presents</span>
+                <div class="flex justify-center sm:justify-start">
+                    <div class="inline-flex items-center gap-2 bg-white text-slate-800 px-3.5 py-1.5 rounded-full shadow-md mb-6">
+                        <img src="Wisdom youth.png" alt="Wisdom Youth" class="h-5 w-auto object-contain" onerror="this.onerror=null; this.src='https://placehold.co/80x25/00A3C4/FFFFFF?text=YOUTH';">
+                        <span class="text-xs font-semibold text-slate-600">presents</span>
+                    </div>
                 </div>
 
-                <!-- Main Event Logo & District Edition Header -->
-                <div class="mb-4">
-                    <div class="bg-white/95 backdrop-blur-sm inline-block p-3.5 sm:p-4 rounded-2xl shadow-lg mb-4">
-                        <img src="Mainlogo.png" alt="Yuvajana Sammelanam" class="h-20 sm:h-28 w-auto object-contain" onerror="this.onerror=null; this.src='https://placehold.co/280x110/0D213F/FFD54F?text=YUVAJANA+SAMMELANAM';">
+                <!-- Main Event Logo (Centered, Larger with Floating Animation) & District Edition Header -->
+                <div class="mb-6 flex flex-col items-center text-center">
+                    <div class="animate-logo-float bg-white/95 backdrop-blur-md inline-flex items-center justify-center p-4 sm:p-6 rounded-3xl shadow-2xl border border-white/40 mb-4 max-w-full">
+                        <img src="Mainlogo.png" alt="Yuvajana Sammelanam" class="h-28 sm:h-40 md:h-44 w-auto object-contain" onerror="this.onerror=null; this.src='https://placehold.co/340x140/0D213F/FFD54F?text=YUVAJANA+SAMMELANAM';">
                     </div>
-                    <div class="flex flex-wrap items-center gap-2">
-                        <span class="px-3 py-1 rounded-lg bg-brandGold-500/20 border border-brandGold-400/40 text-brandGold-400 text-xs sm:text-sm font-bold uppercase tracking-wider">
+                    <div class="flex flex-wrap justify-center items-center gap-2">
+                        <span class="px-3.5 py-1 rounded-full bg-brandGold-500/20 border border-brandGold-400/40 text-brandGold-400 text-xs sm:text-sm font-bold uppercase tracking-wider">
                             Kozhikode North District
                         </span>
                     </div>
                 </div>
 
                 <!-- Tagline -->
-                <h1 class="text-2xl sm:text-3xl font-extrabold text-brandBlue-400 leading-tight mb-3">
+                <h1 class="text-2xl sm:text-3xl font-extrabold text-brandBlue-400 leading-tight mb-3 text-center sm:text-left">
                     Empowering youth for a purposeful tomorrow
                 </h1>
 
                 <!-- Description -->
-                <p class="text-slate-200 text-sm sm:text-base leading-relaxed mb-6">
+                <p class="text-slate-200 text-sm sm:text-base leading-relaxed mb-6 text-center sm:text-left">
                     Kozhikode North District <strong class="text-white font-semibold">Youth Conference (Yuvajana Sammelanam)</strong> — inspiring talks, leadership sessions, career &amp; moral guidance, interactive forums and youth empowerment programmes.
                 </p>
 
                 <!-- Date & Location Pills -->
-                <div class="flex flex-wrap gap-2.5 mb-7">
+                <div class="flex flex-wrap justify-center sm:justify-start gap-2.5 mb-7">
                     <div class="inline-flex items-center gap-2 bg-white/10 border border-white/15 backdrop-blur-sm px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium text-white">
                         <i data-lucide="calendar" class="w-4 h-4 text-brandBlue-400"></i>
                         <span>27 December 2026</span>
                     </div>
-                    <div class="inline-flex items-center gap-2 bg-white/10 border border-white/15 backdrop-blur-sm px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium text-white">
+                    <a href="#venue" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 border border-white/15 backdrop-blur-sm px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium text-white transition">
                         <i data-lucide="map-pin" class="w-4 h-4 text-brandGold-400"></i>
-                        <span>Ulliyeri, Kozhikode</span>
-                    </div>
+                        <span>Message Cultural Centre (MCC), Parakadavu • Ulliyeri</span>
+                    </a>
                 </div>
 
                 <!-- Primary & Secondary Action Buttons (Hyperlinks ready for your pages) -->
@@ -514,18 +528,18 @@
                         </li>
                         <li class="flex items-start gap-3.5">
                             <span class="w-6 h-6 rounded-full bg-brandBlue-500/15 text-brandBlue-600 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">4</span>
-                            <span>Show your Delegate ID (QR pass) at the on-boarding counter at Ulliyeri before 4:00 PM.</span>
+                            <span>Show your Delegate ID (QR pass) at the on-boarding counter at Message Cultural Centre (MCC), Parakadavu before 4:00 PM.</span>
                         </li>
                     </ol>
                 </div>
 
-                <!-- VENUE MAP CARD (Ulliyeri, Kozhikode) -->
+                <!-- VENUE MAP CARD (Message Cultural Centre Parakadavu (MCC), near Ulliyeri) -->
                 <div id="venue" class="bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-100">
-                    <!-- Embedded Interactive Google Map for Ulliyeri, Kozhikode -->
-                    <div class="relative w-full h-52 sm:h-64 bg-slate-200">
+                    <!-- Embedded Interactive Google Map for Message Cultural Centre Parakadavu (MCC) -->
+                    <div class="relative w-full h-56 sm:h-64 bg-slate-200">
                         <iframe 
-                            title="Venue Map - Ulliyeri, Kozhikode"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15643.896741802127!2d75.75479185!3d11.40942765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba666039b6f0139%3A0x6003711044d8f27c!2sUlliyeri%2C%20Kerala!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                            title="Venue Map - Message Cultural Centre Parakadavu (MCC)"
+                            src="https://maps.google.com/maps?q=Message%20Cultural%20Centre%20Parakadavu%20Palery%20Perambra%20Kerala&t=&z=15&ie=UTF8&iwloc=&output=embed" 
                             class="w-full h-full border-0" 
                             allowfullscreen="" 
                             loading="lazy" 
@@ -533,13 +547,13 @@
                         </iframe>
                     </div>
                     <!-- Venue Bottom Info Bar -->
-                    <div class="p-4 sm:p-5 flex items-center justify-between gap-3">
+                    <div class="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                         <div>
                             <p class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">VENUE</p>
-                            <h3 class="text-base sm:text-lg font-extrabold text-slate-900">Ulliyeri, Kozhikode</h3>
-                            <p class="text-xs text-slate-500">Sunday, 27 Dec 2026 • 4:00 PM</p>
+                            <h3 class="text-base sm:text-lg font-extrabold text-slate-900">Message Cultural Centre (MCC)</h3>
+                            <p class="text-xs text-slate-500">Near Parakadavu, Ulliyeri - Perambra Rd • Sunday, 27 Dec 2026 • 4:00 PM</p>
                         </div>
-                        <a href="https://maps.google.com/?q=Ulliyeri,Kozhikode,Kerala" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-navy-900 hover:bg-navy-800 text-white text-xs sm:text-sm font-bold px-4 py-3 rounded-xl shadow transition shrink-0">
+                        <a href="https://maps.app.goo.gl/K5DEmc73DmcKNs2R8?g_st=iwb" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-navy-900 hover:bg-navy-800 text-white text-xs sm:text-sm font-bold px-4 py-3 rounded-xl shadow transition shrink-0">
                             <i data-lucide="navigation" class="w-4 h-4 text-brandGold-400"></i>
                             <span>Directions</span>
                         </a>
@@ -605,11 +619,11 @@
                     <!-- FAQ 5 -->
                     <div class="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
                         <button type="button" class="faq-btn w-full px-5 py-4 text-left flex items-center justify-between gap-4 font-bold text-slate-800 text-sm sm:text-base hover:bg-slate-50 transition">
-                            <span>What time should we arrive at Ulliyeri?</span>
+                            <span>What time should we arrive at the venue?</span>
                             <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform duration-200 shrink-0"></i>
                         </button>
                         <div class="faq-content hidden px-5 pb-4 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-50 pt-3">
-                            The conference starts promptly at 4:00 PM on Sunday, 27 December 2026. On-boarding counters open at 3:15 PM for smooth check-in.
+                            The conference starts promptly at 4:00 PM on Sunday, 27 December 2026 at Message Cultural Centre (MCC), Parakadavu (near Ulliyeri). On-boarding counters open at 3:15 PM for smooth check-in.
                         </div>
                     </div>
                 </div>
@@ -656,7 +670,7 @@
                     Yuvajana Sammelanam • Kozhikode North District Youth Conference
                 </h3>
                 <p class="text-xs sm:text-sm text-brandGold-400 font-medium mb-3">
-                    27 December 2026 • 4:00 PM • Ulliyeri, Kozhikode
+                    27 December 2026 • 4:00 PM • Message Cultural Centre (MCC), Parakadavu (Ulliyeri)
                 </p>
                 <p class="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-xl">
                     A landmark district youth conference organized by Wisdom Youth Kozhikode North District for students, young professionals, and youth activists.
