@@ -62,7 +62,7 @@
         </div>
     </header>
 
-    <!-- Custom Notification Banner (Replaces alert) -->
+    <!-- Custom Notification Banner -->
     <div id="toast-box" class="fixed top-20 left-1/2 -translate-x-1/2 z-[100] hidden max-w-sm w-[92%]">
         <div id="toast-inner" class="bg-rose-600 text-white px-4 py-3.5 rounded-2xl shadow-xl flex items-center gap-3 text-sm font-semibold">
             <i data-lucide="alert-circle" class="w-5 h-5 shrink-0"></i>
@@ -74,7 +74,7 @@
     <main class="flex-1 py-7 px-4">
         <div class="max-w-lg mx-auto">
             
-            <!-- Header Title (Matching Screenshot) -->
+            <!-- Header Title -->
             <div class="mb-6">
                 <p class="text-[11px] font-bold tracking-widest text-rose-500 uppercase mb-1">NEW REGISTRATION</p>
                 <h1 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
@@ -94,21 +94,21 @@
                     <div class="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[2px] bg-slate-200 z-0"></div>
                     <div id="progress-line" class="absolute left-0 top-1/2 -translate-y-1/2 h-[2px] bg-navy-900 z-0 transition-all duration-300" style="width: 0%;"></div>
 
-                    <button type="button" data-step="1" class="step-dot relative z-10 w-10 h-10 rounded-full bg-navy-900 text-white flex items-center justify-center shadow-md transition-all">
+                    <div data-step="1" class="step-dot relative z-10 w-10 h-10 rounded-full bg-navy-900 text-white flex items-center justify-center shadow-md transition-all">
                         <i data-lucide="user" class="w-4 h-4"></i>
-                    </button>
-                    <button type="button" data-step="2" class="step-dot relative z-10 w-10 h-10 rounded-full bg-white border-2 border-slate-200 text-slate-400 flex items-center justify-center transition-all">
+                    </div>
+                    <div data-step="2" class="step-dot relative z-10 w-10 h-10 rounded-full bg-white border-2 border-slate-200 text-slate-400 flex items-center justify-center transition-all">
                         <i data-lucide="map-pin" class="w-4 h-4"></i>
-                    </button>
-                    <button type="button" data-step="3" class="step-dot relative z-10 w-10 h-10 rounded-full bg-white border-2 border-slate-200 text-slate-400 flex items-center justify-center transition-all">
+                    </div>
+                    <div data-step="3" class="step-dot relative z-10 w-10 h-10 rounded-full bg-white border-2 border-slate-200 text-slate-400 flex items-center justify-center transition-all">
                         <i data-lucide="briefcase" class="w-4 h-4"></i>
-                    </button>
-                    <button type="button" data-step="4" class="step-dot relative z-10 w-10 h-10 rounded-full bg-white border-2 border-slate-200 text-slate-400 flex items-center justify-center transition-all">
+                    </div>
+                    <div data-step="4" class="step-dot relative z-10 w-10 h-10 rounded-full bg-white border-2 border-slate-200 text-slate-400 flex items-center justify-center transition-all">
                         <i data-lucide="users" class="w-4 h-4"></i>
-                    </button>
-                    <button type="button" data-step="5" class="step-dot relative z-10 w-10 h-10 rounded-full bg-white border-2 border-slate-200 text-slate-400 flex items-center justify-center transition-all">
+                    </div>
+                    <div data-step="5" class="step-dot relative z-10 w-10 h-10 rounded-full bg-white border-2 border-slate-200 text-slate-400 flex items-center justify-center transition-all">
                         <i data-lucide="clipboard-check" class="w-4 h-4"></i>
-                    </button>
+                    </div>
                 </div>
             </div>
 
@@ -159,7 +159,7 @@
                         </div>
                     </div>
 
-                    <!-- WhatsApp Toggle Card (Matching Screenshot) -->
+                    <!-- WhatsApp Toggle Card -->
                     <div class="rounded-2xl border border-brandBlue-500/20 bg-brandBlue-500/[0.03] p-4 space-y-3">
                         <div class="flex items-center justify-between gap-3">
                             <div>
@@ -185,7 +185,7 @@
                         </div>
                         <div>
                             <label for="age" class="block text-xs font-bold text-slate-700 mb-1.5">Age <span class="text-rose-500">*</span></label>
-                            <input type="number" id="age" min="12" max="75" placeholder="22" class="w-full px-4 py-3.5 rounded-2xl border border-slate-200 focus:border-brandBlue-500 outline-none text-sm font-semibold transition">
+                            <input type="number" id="age" min="15" max="75" placeholder="24" class="w-full px-4 py-3.5 rounded-2xl border border-slate-200 focus:border-brandBlue-500 outline-none text-sm font-semibold transition">
                         </div>
                     </div>
 
@@ -243,7 +243,7 @@
                         </select>
                     </div>
 
-                    <!-- How will you travel? (Matching Screenshot) -->
+                    <!-- How will you travel? -->
                     <div>
                         <label class="block text-xs font-bold text-slate-700 mb-1.5">How will you travel? <span class="text-rose-500">*</span></label>
                         <div class="grid grid-cols-2 gap-3">
@@ -264,6 +264,12 @@
                             Back
                         </button>
                         <button type="button" onclick="nextStep(3)" class="w-2/3 btn-primary-gradient text-white font-bold text-base py-4 px-6 rounded-2xl flex items-center justify-center gap-2 shadow-md">
+                            <span>Continue</span>
+                            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                </div>
+
                 <!-- STEP 3: PROFESSION & JOB DETAILS (Working Youth Only) -->
                 <div id="step-3" class="step-panel step-transition hidden space-y-5">
                     <div class="flex items-center gap-3.5 pb-1">
@@ -306,7 +312,7 @@
                         <select id="interestTrack" class="w-full px-4 py-3.5 rounded-2xl border border-slate-200 focus:border-brandBlue-500 outline-none text-sm font-medium bg-white transition">
                             <option value="All Sessions">All Main Conference Sessions</option>
                             <option value="Leadership & Social Action">Leadership &amp; Social Action</option>
-                            <option value="Career & Higher Studies Guidance">Career &amp; Higher Studies Guidance</option>
+                            <option value="Career & Professional Ethics">Career &amp; Professional Ethics</option>
                             <option value="Ideological & Moral Talks">Ideological &amp; Moral Talks</option>
                         </select>
                     </div>
@@ -330,7 +336,7 @@
                         </div>
                         <div>
                             <h2 class="text-lg font-extrabold text-slate-900 leading-tight">Add Friends / Unit Members</h2>
-                            <p class="text-xs text-slate-500">Optional — register fellow youth joining with you</p>
+                            <p class="text-xs text-slate-500">Optional — register fellow working youth joining with you</p>
                         </div>
                     </div>
 
@@ -369,31 +375,31 @@
                     <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200/80 space-y-2.5 text-xs sm:text-sm">
                         <div class="flex justify-between py-1 border-b border-slate-200/60">
                             <span class="text-slate-500">Full Name</span>
-                            <span id="rev-name" class="font-bold text-slate-900">-</span>
+                            <span id="rev-name" class="font-bold text-slate-900 text-right">-</span>
                         </div>
                         <div class="flex justify-between py-1 border-b border-slate-200/60">
                             <span class="text-slate-500">Gender &amp; Age</span>
-                            <span id="rev-gender-age" class="font-bold text-slate-900">-</span>
+                            <span id="rev-gender-age" class="font-bold text-slate-900 text-right">-</span>
                         </div>
                         <div class="flex justify-between py-1 border-b border-slate-200/60">
                             <span class="text-slate-500">Mobile / WhatsApp</span>
-                            <span id="rev-mobile" class="font-bold text-slate-900">-</span>
+                            <span id="rev-mobile" class="font-bold text-slate-900 text-right">-</span>
                         </div>
                         <div class="flex justify-between py-1 border-b border-slate-200/60">
                             <span class="text-slate-500">Place &amp; PIN</span>
-                            <span id="rev-place" class="font-bold text-slate-900">-</span>
+                            <span id="rev-place" class="font-bold text-slate-900 text-right">-</span>
                         </div>
                         <div class="flex justify-between py-1 border-b border-slate-200/60">
                             <span class="text-slate-500">Zone &amp; Unit</span>
-                            <span id="rev-unit" class="font-bold text-slate-900">-</span>
+                            <span id="rev-unit" class="font-bold text-slate-900 text-right">-</span>
                         </div>
                         <div class="flex justify-between py-1 border-b border-slate-200/60">
                             <span class="text-slate-500">Job &amp; Sector</span>
-                            <span id="rev-job" class="font-bold text-slate-900">-</span>
+                            <span id="rev-job" class="font-bold text-slate-900 text-right">-</span>
                         </div>
                         <div class="flex justify-between py-1 border-b border-slate-200/60">
                             <span class="text-slate-500">Travel Mode</span>
-                            <span id="rev-travel" class="font-bold text-slate-900">-</span>
+                            <span id="rev-travel" class="font-bold text-slate-900 text-right">-</span>
                         </div>
                         <div class="flex justify-between py-1">
                             <span class="text-slate-500">Total Delegates</span>
@@ -451,7 +457,7 @@
         </div>
     </main>
 
-    <!-- DARK NAVY FOOTER (Matching Screenshot & Main Site) -->
+    <!-- DARK NAVY FOOTER -->
     <footer class="bg-[#09182D] text-slate-300 py-10 px-4 border-t border-white/10 mt-10">
         <div class="max-w-lg md:max-w-3xl mx-auto">
             <div class="inline-block bg-white px-3.5 py-2 rounded-xl mb-4 shadow">
@@ -469,25 +475,12 @@
         </div>
     </footer>
 
-    <!-- Firebase Modular SDK & Wizard Logic -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-
-        // Updated User Provided Firebase Configuration (youth-146dc)
-        const firebaseConfig = {
-            apiKey: "AIzaSyDXZdG0gVdnNS8I0uVacb_6s2fSMM6j3kA",
-            authDomain: "youth-146dc.firebaseapp.com",
-            projectId: "youth-146dc",
-            storageBucket: "youth-146dc.firebasestorage.app",
-            messagingSenderId: "430168550986",
-            appId: "1:430168550986:web:38cd419abe7d60f89b80b3"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app);
+    <!-- Standard UI & Wizard Script (Works immediately even offline) -->
+    <script>
+        // Render all Lucide icons immediately
+        if (window.lucide) {
+            lucide.createIcons();
+        }
 
         // Zone to Unit Mapping
         const zoneUnitsMap = {
@@ -525,9 +518,6 @@
                 unitSelect.appendChild(opt);
             });
         });
-
-        // Initialize icons
-        lucide.createIcons();
 
         // Toast Helper
         window.showToast = function(msg, isError = true) {
@@ -569,7 +559,10 @@
                 altWhatsappBox.classList.add('hidden');
             } else {
                 altWhatsappBox.classList.remove('hidden');
-        // Dynamic Companions (Step 4) - Mobile Number is REQUIRED
+            }
+        });
+
+        // Dynamic Companions (Step 4) - Mobile Number & Job are REQUIRED
         let companionCount = 0;
         window.addCompanion = function() {
             companionCount++;
@@ -583,7 +576,7 @@
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
                     <input type="text" placeholder="Full Name *" class="comp-name sm:col-span-2 px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-sm outline-none focus:border-brandBlue-500">
-                    <input type="number" placeholder="Age *" min="18" max="75" class="comp-age px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-sm outline-none focus:border-brandBlue-500">
+                    <input type="number" placeholder="Age *" min="15" max="75" class="comp-age px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-sm outline-none focus:border-brandBlue-500">
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                     <input type="tel" maxlength="10" placeholder="10-digit Mobile Number *" class="comp-mobile px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-sm font-medium outline-none focus:border-brandBlue-500">
@@ -632,7 +625,7 @@
                     const wa = document.getElementById('whatsappNumber').value.trim();
                     if (!/^\d{10}$/.test(wa)) { showToast('Please enter a valid 10-digit WhatsApp number.'); return false; }
                 }
-                if (!age || age < 10 || age > 90) { showToast('Please enter a valid age.'); return false; }
+                if (!age || age < 12 || age > 90) { showToast('Please enter a valid age.'); return false; }
             }
             if (currentStep === 2) {
                 const place = document.getElementById('place').value.trim();
@@ -677,7 +670,6 @@
             if (!validateStep(currentStep)) return;
 
             if (targetStep === 5) {
-                // Populate Review Summary
                 const name = document.getElementById('fullName').value.trim();
                 const gender = document.getElementById('gender').value;
                 const age = document.getElementById('age').value.trim();
@@ -708,8 +700,28 @@
         window.prevStep = function(targetStep) {
             updateStepperUI(targetStep);
         };
+    </script>
 
-        // Submit Form to Firestore
+    <!-- Firebase Modular SDK Submission Handler -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Firebase Configuration (youth-146dc)
+        const firebaseConfig = {
+            apiKey: "AIzaSyDXZdG0gVdnNS8I0uVacb_6s2fSMM6j3kA",
+            authDomain: "youth-146dc.firebaseapp.com",
+            projectId: "youth-146dc",
+            storageBucket: "youth-146dc.firebasestorage.app",
+            messagingSenderId: "430168550986",
+            appId: "1:430168550986:web:38cd419abe7d60f89b80b3"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
         document.getElementById('registration-form').addEventListener('submit', async (e) => {
             e.preventDefault();
             const submitBtn = document.getElementById('submit-btn');
@@ -717,7 +729,6 @@
             submitBtn.innerHTML = `<span>Submitting...</span>`;
 
             try {
-                // Ensure Firebase Auth is active before Firestore write
                 if (!auth.currentUser) {
                     await signInAnonymously(auth);
                 }
@@ -732,6 +743,7 @@
                     });
                 });
 
+                const sameWhatsappCheckbox = document.getElementById('sameWhatsapp');
                 const mobileVal = document.getElementById('mobile').value.trim();
                 const whatsappVal = sameWhatsappCheckbox.checked ? mobileVal : document.getElementById('whatsappNumber').value.trim();
                 const passCode = 'YS-' + Math.floor(100000 + Math.random() * 900000);
@@ -758,24 +770,22 @@
                     createdAt: serverTimestamp()
                 };
 
-                // Save to Firestore collection "registrations"
                 await addDoc(collection(db, 'registrations'), registrationData);
 
-                // Show Success Pass
                 document.getElementById('stepper-wrapper').classList.add('hidden');
                 document.getElementById('step-5').classList.add('hidden');
                 document.getElementById('pass-id').textContent = passCode;
                 document.getElementById('pass-name').textContent = registrationData.fullName;
                 document.getElementById('pass-unit').textContent = `${registrationData.unit} • ${registrationData.zone} (${registrationData.totalDelegates} Delegate${registrationData.totalDelegates > 1 ? 's' : ''})`;
                 document.getElementById('success-screen').classList.remove('hidden');
-                lucide.createIcons();
+                if (window.lucide) lucide.createIcons();
 
             } catch (error) {
                 console.error('Registration Error:', error);
-                showToast('Submission failed: ' + (error.message || 'Check Firestore rules & internet.'));
+                window.showToast('Submission failed: ' + (error.message || 'Check Firestore rules & internet.'));
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = `<span>Submit Registration</span><i data-lucide="check" class="w-5 h-5"></i>`;
-                lucide.createIcons();
+                if (window.lucide) lucide.createIcons();
             }
         });
     </script>
