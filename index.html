@@ -86,6 +86,39 @@
         .animate-logo-float {
             animation: floatLogo 3.6s ease-in-out infinite;
         }
+
+        /* Animated Hamburger to X Icon */
+        .hamburger-line {
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease, width 0.35s ease;
+            transform-origin: center;
+        }
+        .menu-open .line-top {
+            transform: translateY(7.5px) rotate(45deg);
+        }
+        .menu-open .line-middle {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+        .menu-open .line-bottom {
+            transform: translateY(-7.5px) rotate(-45deg);
+        }
+
+        /* Professional Slide-in Drawer & Backdrop */
+        #mobile-drawer-backdrop {
+            transition: opacity 0.35s ease, visibility 0.35s ease;
+        }
+        #mobile-drawer {
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .drawer-item {
+            opacity: 0;
+            transform: translateX(16px);
+            transition: opacity 0.35s ease, transform 0.35s ease, background-color 0.2s ease, color 0.2s ease;
+        }
+        #mobile-drawer.is-open .drawer-item {
+            opacity: 1;
+            transform: translateX(0);
+        }
     </style>
 </head>
 <body class="bg-[#F4F7FA] text-slate-800 font-sans antialiased selection:bg-brandBlue-500 selection:text-white">
@@ -107,31 +140,77 @@
                 <a href="register.html" class="px-4 py-2 rounded-full bg-brandBlue-500 text-white hover:bg-brandBlue-600 transition">Register</a>
             </nav>
 
-            <!-- Hamburger Menu Button -->
-            <button id="menu-toggle" aria-label="Open Menu" class="p-2.5 rounded-xl text-slate-700 hover:bg-slate-100 focus:outline-none transition">
-                <i data-lucide="menu" class="w-6 h-6"></i>
+            <!-- Animated Hamburger / Close Menu Button -->
+            <button id="menu-toggle" type="button" aria-label="Toggle Menu" aria-expanded="false" class="relative z-[80] w-11 h-11 rounded-xl bg-slate-50 hover:bg-slate-100 active:scale-95 border border-slate-200/80 flex flex-col items-center justify-center gap-[5px] focus:outline-none transition-all cursor-pointer">
+                <span class="hamburger-line line-top block w-5 h-[2.5px] bg-navy-900 rounded-full pointer-events-none"></span>
+                <span class="hamburger-line line-middle block w-5 h-[2.5px] bg-brandBlue-600 rounded-full pointer-events-none"></span>
+                <span class="hamburger-line line-bottom block w-5 h-[2.5px] bg-navy-900 rounded-full pointer-events-none"></span>
             </button>
         </div>
+    </header>
 
-        <!-- Mobile/Slide-down Navigation Drawer -->
-        <div id="mobile-menu" class="hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 shadow-xl">
-            <div class="max-w-lg mx-auto flex flex-col space-y-2 text-sm font-semibold text-slate-700">
-                <a href="register.html" class="p-3 rounded-xl bg-brandBlue-500/10 text-brandBlue-600 flex items-center justify-between">
-                    <span>Register Now</span>
+    <!-- Professional Slide-Over Navigation Drawer & Backdrop -->
+    <div id="mobile-drawer-backdrop" class="fixed inset-0 z-[60] bg-navy-950/60 backdrop-blur-sm opacity-0 invisible" aria-hidden="true"></div>
+
+    <aside id="mobile-drawer" class="fixed top-0 right-0 bottom-0 z-[70] w-[84%] max-w-sm bg-white shadow-2xl translate-x-full flex flex-col justify-between overflow-y-auto" aria-label="Main Navigation Drawer">
+        <div>
+            <!-- Drawer Header -->
+            <div class="px-5 h-16 flex items-center justify-between border-b border-slate-100 bg-slate-50/80">
+                <div class="flex items-center gap-2.5">
+                    <img src="Wisdom youth.png" alt="Wisdom Youth" class="h-6 w-auto object-contain" onerror="this.onerror=null; this.src='https://placehold.co/80x25/00A3C4/FFFFFF?text=YOUTH';">
+                    <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Menu</span>
+                </div>
+            </div>
+
+            <!-- Primary Action Card inside Drawer -->
+            <div class="p-5 pb-3">
+                <a href="register.html" style="transition-delay: 50ms;" class="drawer-item drawer-link w-full p-4 rounded-2xl btn-primary-gradient text-white font-bold text-sm flex items-center justify-between shadow-lg">
+                    <span class="flex items-center gap-2.5">
+                        <i data-lucide="user-plus" class="w-4 h-4"></i>
+                        <span>Register Now</span>
+                    </span>
                     <i data-lucide="arrow-right" class="w-4 h-4"></i>
                 </a>
-                <a href="my-registration.html" class="p-3 rounded-xl hover:bg-slate-50 flex items-center justify-between">
-                    <span>My Registration / Pass</span>
-                    <i data-lucide="ticket" class="w-4 h-4 text-slate-400"></i>
-                </a>
-                <a href="#programmes" class="p-3 rounded-xl hover:bg-slate-50">Programmes & Sessions</a>
-                <a href="#guidelines" class="p-3 rounded-xl hover:bg-slate-50">Event Guidelines</a>
-                <a href="#venue" class="p-3 rounded-xl hover:bg-slate-50">Venue & Directions</a>
-                <a href="gallery.html" class="p-3 rounded-xl hover:bg-slate-50">Gallery</a>
-                <a href="#faq" class="p-3 rounded-xl hover:bg-slate-50">FAQ</a>
+            </div>
+
+            <!-- Section Links -->
+            <div class="px-5 pb-4">
+                <p class="px-3 text-[10px] font-bold tracking-widest text-slate-400 uppercase mb-2">Explore Conference</p>
+                <nav class="space-y-1 text-sm font-semibold text-slate-700">
+                    <a href="#how-to-register" style="transition-delay: 90ms;" class="drawer-item drawer-link flex items-center gap-3 px-3.5 py-3 rounded-xl hover:bg-brandBlue-500/10 hover:text-brandBlue-600">
+                        <i data-lucide="clipboard-check" class="w-4 h-4 text-brandBlue-500"></i>
+                        <span>How to Register</span>
+                    </a>
+                    <a href="#programmes" style="transition-delay: 130ms;" class="drawer-item drawer-link flex items-center gap-3 px-3.5 py-3 rounded-xl hover:bg-brandBlue-500/10 hover:text-brandBlue-600">
+                        <i data-lucide="sparkles" class="w-4 h-4 text-brandGold-600"></i>
+                        <span>Programmes &amp; Sessions</span>
+                    </a>
+                    <a href="#guidelines" style="transition-delay: 170ms;" class="drawer-item drawer-link flex items-center gap-3 px-3.5 py-3 rounded-xl hover:bg-brandBlue-500/10 hover:text-brandBlue-600">
+                        <i data-lucide="info" class="w-4 h-4 text-wisdomTeal"></i>
+                        <span>Event Guidelines</span>
+                    </a>
+                    <a href="#venue" style="transition-delay: 210ms;" class="drawer-item drawer-link flex items-center gap-3 px-3.5 py-3 rounded-xl hover:bg-brandBlue-500/10 hover:text-brandBlue-600">
+                        <i data-lucide="map-pin" class="w-4 h-4 text-rose-500"></i>
+                        <span>Venue &amp; Directions</span>
+                    </a>
+                    <a href="gallery.html" style="transition-delay: 250ms;" class="drawer-item drawer-link flex items-center gap-3 px-3.5 py-3 rounded-xl hover:bg-brandBlue-500/10 hover:text-brandBlue-600">
+                        <i data-lucide="images" class="w-4 h-4 text-brandBlue-500"></i>
+                        <span>Media Gallery</span>
+                    </a>
+                    <a href="#faq" style="transition-delay: 290ms;" class="drawer-item drawer-link flex items-center gap-3 px-3.5 py-3 rounded-xl hover:bg-brandBlue-500/10 hover:text-brandBlue-600">
+                        <i data-lucide="help-circle" class="w-4 h-4 text-slate-500"></i>
+                        <span>FAQ</span>
+                    </a>
+                </nav>
             </div>
         </div>
-    </header>
+
+        <!-- Drawer Footer Info -->
+        <div class="p-5 bg-slate-50 border-t border-slate-100">
+            <p class="text-xs font-bold text-slate-800">Kozhikode North District Youth Conference</p>
+            <p class="text-[11px] text-slate-500 mt-0.5">27 Dec 2026 • 4:00 PM • MCC Parakadavu</p>
+        </div>
+    </aside>
 
     <!-- Main Container -->
     <main>
@@ -182,15 +261,11 @@
                     </a>
                 </div>
 
-                <!-- Primary & Secondary Action Buttons (Hyperlinks ready for your pages) -->
-                <div class="space-y-3 mb-7">
-                    <a href="register.html" class="w-full btn-primary-gradient text-white font-bold text-base py-3.5 px-6 rounded-2xl flex items-center justify-center gap-2 shadow-lg">
+                <!-- Primary Action Button (Hyperlink ready for your registration page) -->
+                <div class="mb-7">
+                    <a href="register.html" class="w-full btn-primary-gradient text-white font-bold text-base py-4 px-6 rounded-2xl flex items-center justify-center gap-2 shadow-lg">
                         <span>Register now</span>
                         <i data-lucide="arrow-right" class="w-5 h-5"></i>
-                    </a>
-                    <a href="my-registration.html" class="w-full bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold text-sm sm:text-base py-3.5 px-6 rounded-2xl flex items-center justify-center gap-2 transition">
-                        <i data-lucide="ticket" class="w-5 h-5 text-brandGold-400"></i>
-                        <span>My registration</span>
                     </a>
                 </div>
 
@@ -301,12 +376,12 @@
                     <!-- Step 1 -->
                     <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 flex items-start gap-4 relative overflow-hidden">
                         <div class="w-12 h-12 rounded-2xl bg-brandBlue-500/10 text-brandBlue-600 flex items-center justify-center shrink-0">
-                            <i data-lucide="smartphone" class="w-6 h-6"></i>
+                            <i data-lucide="file-edit" class="w-6 h-6"></i>
                         </div>
                         <div class="pr-6">
-                            <h3 class="font-bold text-slate-900 text-base mb-1">Enter your mobile number</h3>
+                            <h3 class="font-bold text-slate-900 text-base mb-1">Fill in your basic details</h3>
                             <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">
-                                New delegates go straight to the form. Returning members get their unit and personal details pre-filled with an OTP.
+                                Open the registration form and enter your name, mobile number, and age category in just a few seconds.
                             </p>
                         </div>
                         <span class="absolute right-4 top-2 text-5xl font-black text-slate-100 select-none pointer-events-none">1</span>
@@ -320,7 +395,7 @@
                         <div class="pr-6">
                             <h3 class="font-bold text-slate-900 text-base mb-1">Select your unit &amp; add friends</h3>
                             <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">
-                                Choose your local Wisdom Youth unit in Kozhikode North and add fellow youth delegates in the same registration.
+                                Choose your local Wisdom Youth unit in Kozhikode North and add fellow youth delegates in the same form.
                             </p>
                         </div>
                         <span class="absolute right-4 top-2 text-5xl font-black text-slate-100 select-none pointer-events-none">2</span>
@@ -329,12 +404,12 @@
                     <!-- Step 3 -->
                     <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 flex items-start gap-4 relative overflow-hidden">
                         <div class="w-12 h-12 rounded-2xl bg-wisdomTeal/15 text-wisdomTeal flex items-center justify-center shrink-0">
-                            <i data-lucide="qr-code" class="w-6 h-6"></i>
+                            <i data-lucide="check-circle" class="w-6 h-6"></i>
                         </div>
                         <div class="pr-6">
-                            <h3 class="font-bold text-slate-900 text-base mb-1">Confirm &amp; get your delegate pass</h3>
+                            <h3 class="font-bold text-slate-900 text-base mb-1">Submit &amp; confirm your seat</h3>
                             <p class="text-xs sm:text-sm text-slate-500 leading-relaxed">
-                                Complete registration and receive your Yuvajana Sammelanam ID with an instant QR pass for check-in at Ulliyeri.
+                                Submit the form to instantly confirm your participation at Yuvajana Sammelanam, MCC Parakadavu.
                             </p>
                         </div>
                         <span class="absolute right-4 top-2 text-5xl font-black text-slate-100 select-none pointer-events-none">3</span>
@@ -608,11 +683,11 @@
                     <!-- FAQ 4 -->
                     <div class="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
                         <button type="button" class="faq-btn w-full px-5 py-4 text-left flex items-center justify-between gap-4 font-bold text-slate-800 text-sm sm:text-base hover:bg-slate-50 transition">
-                            <span>How do I edit or view my registration?</span>
+                            <span>How do I get venue directions and event updates?</span>
                             <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform duration-200 shrink-0"></i>
                         </button>
                         <div class="faq-content hidden px-5 pb-4 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-50 pt-3">
-                            Tap the "My registration" button at the top of the page, enter your registered mobile number, and verify with OTP to view, download, or update your pass.
+                            Once you submit the registration form, all schedule updates and direct Google Maps location links for MCC Parakadavu will be shared with you via WhatsApp.
                         </div>
                     </div>
 
@@ -686,7 +761,6 @@
                         <li><a href="register.html" class="hover:text-brandGold-400 transition">Register</a></li>
                         <li><a href="gallery.html" class="hover:text-brandGold-400 transition">Gallery</a></li>
                         <li><a href="news.html" class="hover:text-brandGold-400 transition">News &amp; articles</a></li>
-                        <li><a href="my-registration.html" class="hover:text-brandGold-400 transition">My pass</a></li>
                         <li><a href="#programmes" class="hover:text-brandGold-400 transition">Programmes</a></li>
                         <li><a href="#venue" class="hover:text-brandGold-400 transition">Venue &amp; Directions</a></li>
                         <li><a href="feedback.html" class="hover:text-brandGold-400 transition">Feedback</a></li>
@@ -731,18 +805,53 @@
         // Initialize Lucide Icons
         lucide.createIcons();
 
-        // Mobile Menu Toggle
+        // Professional Slide-in Drawer & Animated Hamburger Menu
         const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+        const mobileDrawer = document.getElementById('mobile-drawer');
+        const drawerBackdrop = document.getElementById('mobile-drawer-backdrop');
+        let isMenuOpen = false;
+
+        function openMenu() {
+            isMenuOpen = true;
+            menuToggle.classList.add('menu-open');
+            menuToggle.setAttribute('aria-expanded', 'true');
+            mobileDrawer.classList.remove('translate-x-full');
+            mobileDrawer.classList.add('is-open');
+            drawerBackdrop.classList.remove('opacity-0', 'invisible');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            isMenuOpen = false;
+            menuToggle.classList.remove('menu-open');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            mobileDrawer.classList.add('translate-x-full');
+            mobileDrawer.classList.remove('is-open');
+            drawerBackdrop.classList.add('opacity-0', 'invisible');
+            document.body.style.overflow = '';
+        }
+
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (isMenuOpen) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
         });
 
-        // Close mobile menu when clicking an anchor link
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
+        drawerBackdrop.addEventListener('click', closeMenu);
+
+        // Close drawer smoothly when clicking any navigation link
+        document.querySelectorAll('.drawer-link').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        // Close drawer on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && isMenuOpen) {
+                closeMenu();
+            }
         });
 
         // FAQ Accordion Logic
