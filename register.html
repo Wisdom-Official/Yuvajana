@@ -30,228 +30,209 @@
     </script>
     <style>
         .btn-primary-gradient {
-            background: linear-gradient(90deg, #0088D1 0%, #1976D2 45%, #F59E0B 100%);
-            transition: all 0.3s ease;
+            background: linear-gradient(90deg, #0088D1 0%, #1976D2 48%, #F59E0B 100%);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .btn-primary-gradient:hover {
             filter: brightness(1.06);
             transform: translateY(-1px);
-            box-shadow: 0 10px 25px -5px rgba(0, 136, 209, 0.35);
+            box-shadow: 0 8px 20px -4px rgba(0, 136, 209, 0.35);
         }
         .step-transition {
-            animation: fadeSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            animation: fadeSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
         @keyframes fadeSlideIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
-<body class="bg-[#F4F7FA] text-slate-800 font-sans antialiased min-h-screen flex flex-col">
+<body class="bg-[#F3F6FA] text-slate-800 font-sans antialiased min-h-screen flex flex-col">
 
     <!-- Top Navigation Bar -->
-    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm">
-        <div class="max-w-lg md:max-w-3xl mx-auto px-4 h-16 flex items-center justify-between">
-            <a href="index.html" class="flex items-center gap-2.5">
-                <img src="Mainlogo.png" alt="Yuvajana Sammelanam Logo" class="h-10 w-auto object-contain" onerror="this.onerror=null; this.src='https://placehold.co/140x50/0D213F/FFC107?text=YUVAJANA+SAMMELANAM';">
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/70">
+        <div class="max-w-lg mx-auto px-4 h-14 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2">
+                <img src="Mainlogo.png" alt="Yuvajana Sammelanam Logo" class="h-8 sm:h-9 w-auto object-contain" onerror="this.onerror=null; this.src='https://placehold.co/130x42/0D213F/FFC107?text=YUVAJANA+SAMMELANAM';">
             </a>
-            <a href="index.html" class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-slate-600 hover:text-brandBlue-600 bg-slate-100 hover:bg-slate-200/70 px-3.5 py-2 rounded-xl transition">
-                <i data-lucide="arrow-left" class="w-4 h-4"></i>
-                <span>Back to Home</span>
+            <a href="index.html" class="inline-flex items-center gap-1.5 text-xs font-bold text-slate-600 hover:text-brandBlue-600 bg-slate-100 hover:bg-slate-200/70 px-3 py-1.5 rounded-xl transition">
+                <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+                <span>Home</span>
             </a>
         </div>
     </header>
 
-    <!-- Custom Notification Banner -->
-    <div id="toast-box" class="fixed top-20 left-1/2 -translate-x-1/2 z-[100] hidden max-w-sm w-[92%]">
-        <div id="toast-inner" class="bg-rose-600 text-white px-4 py-3.5 rounded-2xl shadow-xl flex items-center gap-3 text-sm font-semibold">
-            <i data-lucide="alert-circle" class="w-5 h-5 shrink-0"></i>
+    <!-- Custom Notification Toast -->
+    <div id="toast-box" class="fixed top-16 left-1/2 -translate-x-1/2 z-[100] hidden max-w-sm w-[92%]">
+        <div id="toast-inner" class="bg-rose-600 text-white px-4 py-3 rounded-2xl shadow-xl flex items-center gap-2.5 text-xs sm:text-sm font-semibold">
+            <i data-lucide="alert-circle" class="w-4 h-4 shrink-0"></i>
             <span id="toast-message">Please fill all required fields.</span>
         </div>
     </div>
 
     <!-- Main Registration Container -->
-    <main class="flex-1 py-7 px-4">
+    <main class="flex-1 py-5 sm:py-7 px-4">
         <div class="max-w-lg mx-auto">
             
             <!-- Header Title -->
-            <div class="mb-6">
-                <p class="text-[11px] font-bold tracking-widest text-rose-500 uppercase mb-1">NEW REGISTRATION</p>
-                <h1 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+            <div class="mb-5 text-center sm:text-left">
+                <span class="inline-block text-[10px] font-extrabold tracking-widest text-rose-500 uppercase bg-rose-500/10 px-2.5 py-0.5 rounded-full mb-1.5">DELEGATE REGISTRATION</span>
+                <h1 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight leading-snug">
                     Welcome to <span class="text-brandBlue-500">YUVAJANA</span> <span class="text-brandGold-600">SAMMELANAM</span>
                 </h1>
             </div>
 
-            <!-- Stepper Progress Bar (Step 1 of 5) -->
-            <div id="stepper-wrapper" class="mb-6">
-                <div class="flex items-center justify-between text-xs font-bold mb-3">
+            <!-- Compact Stepper Progress Bar -->
+            <div id="stepper-wrapper" class="mb-5">
+                <div class="flex items-center justify-between text-xs font-bold mb-2.5 px-0.5">
                     <span id="step-counter" class="text-slate-500">Step 1 of 5</span>
-                    <span id="step-label" class="text-brandBlue-600">Personal</span>
+                    <span id="step-label" class="text-brandBlue-600">Personal Details</span>
                 </div>
 
                 <!-- 5 Step Circles with Connecting Line -->
                 <div class="relative flex items-center justify-between">
-                    <div class="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[2px] bg-slate-200 z-0"></div>
-                    <div id="progress-line" class="absolute left-0 top-1/2 -translate-y-1/2 h-[2px] bg-navy-900 z-0 transition-all duration-300" style="width: 0%;"></div>
+                    <div class="absolute left-4 right-4 top-1/2 -translate-y-1/2 h-[2px] bg-slate-200 z-0"></div>
+                    <div id="progress-line" class="absolute left-4 top-1/2 -translate-y-1/2 h-[2px] bg-navy-900 z-0 transition-all duration-300" style="width: 0%;"></div>
 
-                    <div data-step="1" class="step-dot relative z-10 w-10 h-10 rounded-full bg-navy-900 text-white flex items-center justify-center shadow-md transition-all">
+                    <div data-step="1" class="step-dot relative z-10 w-9 h-9 rounded-full bg-navy-900 text-white flex items-center justify-center shadow-sm transition-all">
                         <i data-lucide="user" class="w-4 h-4"></i>
                     </div>
-                    <div data-step="2" class="step-dot relative z-10 w-10 h-10 rounded-full bg-white border-2 border-slate-200 text-slate-400 flex items-center justify-center transition-all">
+                    <div data-step="2" class="step-dot relative z-10 w-9 h-9 rounded-full bg-white border-2 border-slate-200 text-slate-400 flex items-center justify-center transition-all">
                         <i data-lucide="map-pin" class="w-4 h-4"></i>
                     </div>
-                    <div data-step="3" class="step-dot relative z-10 w-10 h-10 rounded-full bg-white border-2 border-slate-200 text-slate-400 flex items-center justify-center transition-all">
+                    <div data-step="3" class="step-dot relative z-10 w-9 h-9 rounded-full bg-white border-2 border-slate-200 text-slate-400 flex items-center justify-center transition-all">
                         <i data-lucide="briefcase" class="w-4 h-4"></i>
                     </div>
-                    <div data-step="4" class="step-dot relative z-10 w-10 h-10 rounded-full bg-white border-2 border-slate-200 text-slate-400 flex items-center justify-center transition-all">
+                    <div data-step="4" class="step-dot relative z-10 w-9 h-9 rounded-full bg-white border-2 border-slate-200 text-slate-400 flex items-center justify-center transition-all">
                         <i data-lucide="users" class="w-4 h-4"></i>
                     </div>
-                    <div data-step="5" class="step-dot relative z-10 w-10 h-10 rounded-full bg-white border-2 border-slate-200 text-slate-400 flex items-center justify-center transition-all">
+                    <div data-step="5" class="step-dot relative z-10 w-9 h-9 rounded-full bg-white border-2 border-slate-200 text-slate-400 flex items-center justify-center transition-all">
                         <i data-lucide="clipboard-check" class="w-4 h-4"></i>
                     </div>
                 </div>
             </div>
 
             <!-- Form Card -->
-            <form id="registration-form" class="bg-white rounded-3xl p-6 sm:p-7 shadow-lg border border-slate-100" novalidate>
+            <form id="registration-form" class="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 shadow-md shadow-slate-200/60 border border-slate-100" novalidate>
 
                 <!-- STEP 1: PERSONAL DETAILS -->
-                <div id="step-1" class="step-panel step-transition space-y-5">
-                    <div class="flex items-center gap-3.5 pb-1">
-                        <div class="w-11 h-11 rounded-2xl bg-brandBlue-500/15 text-brandBlue-600 flex items-center justify-center shrink-0">
+                <div id="step-1" class="step-panel step-transition space-y-4">
+                    <div class="flex items-center gap-3 pb-2 border-b border-slate-100">
+                        <div class="w-10 h-10 rounded-xl bg-brandBlue-500/10 text-brandBlue-600 flex items-center justify-center shrink-0">
                             <i data-lucide="user" class="w-5 h-5"></i>
                         </div>
                         <div>
-                            <h2 class="text-lg font-extrabold text-slate-900 leading-tight">Personal details</h2>
-                            <p class="text-xs text-slate-500">Tell us who you are</p>
+                            <h2 class="text-base sm:text-lg font-extrabold text-slate-900 leading-tight">Personal Details</h2>
+                            <p class="text-xs text-slate-500">Enter your basic contact information</p>
                         </div>
                     </div>
 
-                    <!-- Full Name -->
-                    <div>
-                        <label for="fullName" class="block text-xs font-bold text-slate-700 mb-1.5">Full name <span class="text-rose-500">*</span></label>
-                        <input type="text" id="fullName" placeholder="Enter your name" class="w-full px-4 py-3.5 rounded-2xl border border-slate-200 focus:border-brandBlue-500 focus:ring-4 focus:ring-brandBlue-500/10 outline-none text-sm font-medium transition">
-                    </div>
-
-                    <!-- Gender -->
-                    <div>
-                        <label class="block text-xs font-bold text-slate-700 mb-1.5">Gender <span class="text-rose-500">*</span></label>
-                        <div class="grid grid-cols-2 gap-3">
-                            <button type="button" data-gender="Male" class="gender-btn py-3.5 px-4 rounded-2xl border-2 border-brandBlue-500 bg-brandBlue-500/5 text-brandBlue-600 font-bold text-sm transition">
-                                Male
-                            </button>
-                            <button type="button" data-gender="Female" class="gender-btn py-3.5 px-4 rounded-2xl border border-slate-200 bg-white text-slate-600 font-semibold text-sm hover:border-slate-300 transition">
-                                Female
-                            </button>
+                    <!-- Full Name & Age -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div class="sm:col-span-2">
+                            <label for="fullName" class="block text-xs font-bold text-slate-700 mb-1">Full Name <span class="text-rose-500">*</span></label>
+                            <input type="text" id="fullName" placeholder="Enter your full name" class="w-full px-3.5 py-3 rounded-xl border border-slate-200 focus:border-brandBlue-500 focus:ring-3 focus:ring-brandBlue-500/10 outline-none text-sm font-medium transition">
                         </div>
-                        <input type="hidden" id="gender" value="Male">
+                        <div>
+                            <label for="age" class="block text-xs font-bold text-slate-700 mb-1">Age <span class="text-rose-500">*</span></label>
+                            <input type="number" id="age" min="15" max="75" placeholder="24" class="w-full px-3.5 py-3 rounded-xl border border-slate-200 focus:border-brandBlue-500 focus:ring-3 focus:ring-brandBlue-500/10 outline-none text-sm font-semibold transition">
+                        </div>
                     </div>
 
                     <!-- Mobile Number -->
                     <div>
-                        <label for="mobile" class="block text-xs font-bold text-slate-700 mb-1.5">Mobile number <span class="text-rose-500">*</span></label>
-                        <div class="flex gap-2.5">
-                            <div class="px-3.5 py-3.5 rounded-2xl border border-slate-200 bg-slate-50 text-sm font-bold text-slate-700 flex items-center gap-1.5 shrink-0">
+                        <label for="mobile" class="block text-xs font-bold text-slate-700 mb-1">Mobile Number <span class="text-rose-500">*</span></label>
+                        <div class="flex gap-2">
+                            <div class="px-3 py-3 rounded-xl border border-slate-200 bg-slate-50 text-xs sm:text-sm font-bold text-slate-700 flex items-center gap-1.5 shrink-0">
                                 <span>🇮🇳</span>
                                 <span>+91</span>
                             </div>
-                            <input type="tel" id="mobile" maxlength="10" placeholder="9876543210" class="w-full px-4 py-3.5 rounded-2xl border border-slate-200 focus:border-brandBlue-500 focus:ring-4 focus:ring-brandBlue-500/10 outline-none text-sm font-semibold tracking-wide transition">
+                            <input type="tel" id="mobile" maxlength="10" placeholder="9876543210" class="w-full px-3.5 py-3 rounded-xl border border-slate-200 focus:border-brandBlue-500 focus:ring-3 focus:ring-brandBlue-500/10 outline-none text-sm font-semibold tracking-wide transition">
                         </div>
                     </div>
 
                     <!-- WhatsApp Toggle Card -->
-                    <div class="rounded-2xl border border-brandBlue-500/20 bg-brandBlue-500/[0.03] p-4 space-y-3">
+                    <div class="rounded-xl border border-brandBlue-500/20 bg-brandBlue-500/[0.03] p-3.5 space-y-2.5">
                         <div class="flex items-center justify-between gap-3">
                             <div>
-                                <p class="text-xs sm:text-sm font-bold text-slate-800">WhatsApp on the same number</p>
-                                <p class="text-[11px] text-slate-500">Event updates is sent on WhatsApp</p>
+                                <p class="text-xs font-bold text-slate-800">WhatsApp on the same number</p>
+                                <p class="text-[11px] text-slate-500">Conference pass &amp; updates sent via WhatsApp</p>
                             </div>
                             <label class="relative inline-flex items-center cursor-pointer shrink-0">
                                 <input type="checkbox" id="sameWhatsapp" checked class="sr-only peer">
-                                <div class="w-12 h-7 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[3px] after:left-[3px] after:bg-white after:rounded-full after:h-[22px] after:w-[22px] after:shadow after:transition-all peer-checked:bg-brandBlue-500"></div>
+                                <div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:shadow after:transition-all peer-checked:bg-brandBlue-500"></div>
                             </label>
                         </div>
                         <div id="alt-whatsapp-box" class="hidden pt-2 border-t border-slate-200/70">
-                            <label for="whatsappNumber" class="block text-xs font-bold text-slate-700 mb-1">WhatsApp number <span class="text-rose-500">*</span></label>
+                            <label for="whatsappNumber" class="block text-xs font-bold text-slate-700 mb-1">WhatsApp Number <span class="text-rose-500">*</span></label>
                             <input type="tel" id="whatsappNumber" maxlength="10" placeholder="Enter 10-digit WhatsApp number" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-sm font-medium outline-none focus:border-brandBlue-500">
                         </div>
                     </div>
 
-                    <!-- Email & Age -->
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                        <div class="sm:col-span-2">
-                            <label for="email" class="block text-xs font-bold text-slate-700 mb-1.5">Email <span class="text-slate-400 font-normal">(optional)</span></label>
-                            <input type="email" id="email" placeholder="you@example.com" class="w-full px-4 py-3.5 rounded-2xl border border-slate-200 focus:border-brandBlue-500 outline-none text-sm transition">
-                        </div>
-                        <div>
-                            <label for="age" class="block text-xs font-bold text-slate-700 mb-1.5">Age <span class="text-rose-500">*</span></label>
-                            <input type="number" id="age" min="15" max="75" placeholder="24" class="w-full px-4 py-3.5 rounded-2xl border border-slate-200 focus:border-brandBlue-500 outline-none text-sm font-semibold transition">
-                        </div>
+                    <!-- Email (Optional) -->
+                    <div>
+                        <label for="email" class="block text-xs font-bold text-slate-700 mb-1">Email Address <span class="text-slate-400 font-normal">(optional)</span></label>
+                        <input type="email" id="email" placeholder="you@example.com" class="w-full px-3.5 py-3 rounded-xl border border-slate-200 focus:border-brandBlue-500 outline-none text-sm transition">
                     </div>
 
-                    <button type="button" onclick="nextStep(2)" class="w-full btn-primary-gradient text-white font-bold text-base py-4 px-6 rounded-2xl flex items-center justify-center gap-2 shadow-md mt-2">
+                    <button type="button" onclick="nextStep(2)" class="w-full btn-primary-gradient text-white font-bold text-sm sm:text-base py-3.5 px-5 rounded-xl flex items-center justify-center gap-2 shadow-md mt-2">
                         <span>Continue</span>
-                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </button>
                 </div>
 
                 <!-- STEP 2: PLACE & UNIT DETAILS -->
-                <div id="step-2" class="step-panel step-transition hidden space-y-5">
-                    <div class="flex items-center gap-3.5 pb-1">
-                        <div class="w-11 h-11 rounded-2xl bg-brandGold-500/15 text-brandGold-600 flex items-center justify-center shrink-0">
+                <div id="step-2" class="step-panel step-transition hidden space-y-4">
+                    <div class="flex items-center gap-3 pb-2 border-b border-slate-100">
+                        <div class="w-10 h-10 rounded-xl bg-brandGold-500/15 text-brandGold-600 flex items-center justify-center shrink-0">
                             <i data-lucide="map-pin" class="w-5 h-5"></i>
                         </div>
                         <div>
-                            <h2 class="text-lg font-extrabold text-slate-900 leading-tight">Place &amp; Unit details</h2>
-                            <p class="text-xs text-slate-500">Where are you joining us from?</p>
+                            <h2 class="text-base sm:text-lg font-extrabold text-slate-900 leading-tight">Place &amp; Unit Details</h2>
+                            <p class="text-xs text-slate-500">Select your locality and Wisdom Youth unit</p>
                         </div>
                     </div>
 
-                    <!-- Place & PIN Code -->
-                    <div class="grid grid-cols-2 gap-3">
-                        <div>
-                            <label for="place" class="block text-xs font-bold text-slate-700 mb-1.5">Place / Town <span class="text-rose-500">*</span></label>
-                            <input type="text" id="place" placeholder="e.g. Ulliyeri" class="w-full px-4 py-3.5 rounded-2xl border border-slate-200 focus:border-brandBlue-500 outline-none text-sm font-medium transition">
-                        </div>
-                        <div>
-                            <label for="pincode" class="block text-xs font-bold text-slate-700 mb-1.5">PIN code <span class="text-rose-500">*</span></label>
-                            <input type="tel" id="pincode" maxlength="6" placeholder="673323" class="w-full px-4 py-3.5 rounded-2xl border border-slate-200 focus:border-brandBlue-500 outline-none text-sm font-medium transition">
-                        </div>
-                    </div>
-
-                    <!-- Zone Selection (8 Zones) -->
+                    <!-- Place / Town (Full Width) -->
                     <div>
-                        <label for="zone" class="block text-xs font-bold text-slate-700 mb-1.5">Zone <span class="text-rose-500">*</span></label>
-                        <select id="zone" class="w-full px-4 py-3.5 rounded-2xl border border-slate-200 focus:border-brandBlue-500 outline-none text-sm font-medium bg-white transition">
-                            <option value="">Select Zone</option>
-                            <option value="VATAKARA">VATAKARA</option>
-                            <option value="BALUSSERRY">BALUSSERRY</option>
-                            <option value="NADAPURAM">NADAPURAM</option>
-                            <option value="POONUR">POONUR</option>
-                            <option value="KOYILANDY">KOYILANDY</option>
-                            <option value="PAYYOLI">PAYYOLI</option>
-                            <option value="PERAMBRA">PERAMBRA</option>
-                            <option value="KUTTIYADI">KUTTIYADI</option>
-                        </select>
+                        <label for="place" class="block text-xs font-bold text-slate-700 mb-1">Place / Town <span class="text-rose-500">*</span></label>
+                        <input type="text" id="place" placeholder="e.g. Ulliyeri, Payyoli, Vatakara" class="w-full px-3.5 py-3 rounded-xl border border-slate-200 focus:border-brandBlue-500 focus:ring-3 focus:ring-brandBlue-500/10 outline-none text-sm font-medium transition">
                     </div>
 
-                    <!-- Wisdom Youth Unit (Dynamic based on Zone) -->
-                    <div>
-                        <label for="unit" class="block text-xs font-bold text-slate-700 mb-1.5">Wisdom Youth Unit <span class="text-rose-500">*</span></label>
-                        <select id="unit" disabled class="w-full px-4 py-3.5 rounded-2xl border border-slate-200 focus:border-brandBlue-500 outline-none text-sm font-medium bg-slate-50 disabled:text-slate-400 transition">
-                            <option value="">Select Zone first</option>
-                        </select>
+                    <!-- Zone & Unit Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label for="zone" class="block text-xs font-bold text-slate-700 mb-1">Zone <span class="text-rose-500">*</span></label>
+                            <select id="zone" class="w-full px-3.5 py-3 rounded-xl border border-slate-200 focus:border-brandBlue-500 outline-none text-sm font-medium bg-white transition">
+                                <option value="">Select Zone</option>
+                                <option value="VATAKARA">VATAKARA</option>
+                                <option value="BALUSSERRY">BALUSSERRY</option>
+                                <option value="NADAPURAM">NADAPURAM</option>
+                                <option value="POONUR">POONUR</option>
+                                <option value="KOYILANDY">KOYILANDY</option>
+                                <option value="PAYYOLI">PAYYOLI</option>
+                                <option value="PERAMBRA">PERAMBRA</option>
+                                <option value="KUTTIYADI">KUTTIYADI</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="unit" class="block text-xs font-bold text-slate-700 mb-1">Wisdom Youth Unit <span class="text-rose-500">*</span></label>
+                            <select id="unit" disabled class="w-full px-3.5 py-3 rounded-xl border border-slate-200 focus:border-brandBlue-500 outline-none text-sm font-medium bg-slate-50 disabled:text-slate-400 transition">
+                                <option value="">Select Zone first</option>
+                            </select>
+                        </div>
                     </div>
 
-                    <!-- How will you travel? -->
+                    <!-- Travel Mode -->
                     <div>
                         <label class="block text-xs font-bold text-slate-700 mb-1.5">How will you travel? <span class="text-rose-500">*</span></label>
-                        <div class="grid grid-cols-2 gap-3">
-                            <button type="button" data-travel="Own vehicle" class="travel-btn py-3.5 px-3 rounded-2xl border-2 border-brandBlue-500 bg-brandBlue-500/5 text-brandBlue-600 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition">
+                        <div class="grid grid-cols-2 gap-2.5">
+                            <button type="button" data-travel="Own vehicle" class="travel-btn py-3 px-3 rounded-xl border-2 border-brandBlue-500 bg-brandBlue-500/5 text-brandBlue-600 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition">
                                 <i data-lucide="car" class="w-4 h-4 shrink-0"></i>
                                 <span>Own vehicle</span>
                             </button>
-                            <button type="button" data-travel="Shared bus / van" class="travel-btn py-3.5 px-3 rounded-2xl border border-slate-200 bg-white text-slate-600 font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 hover:border-slate-300 transition">
+                            <button type="button" data-travel="Shared bus / van" class="travel-btn py-3 px-3 rounded-xl border border-slate-200 bg-white text-slate-600 font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 hover:border-slate-300 transition">
                                 <i data-lucide="bus" class="w-4 h-4 shrink-0"></i>
                                 <span>Shared bus / van</span>
                             </button>
@@ -259,195 +240,180 @@
                         <input type="hidden" id="travelMode" value="Own vehicle">
                     </div>
 
-                    <div class="flex gap-3 pt-1">
-                        <button type="button" onclick="prevStep(1)" class="w-1/3 py-4 px-4 rounded-2xl border border-slate-200 text-slate-600 font-bold text-sm hover:bg-slate-50 transition">
+                    <div class="flex gap-2.5 pt-2">
+                        <button type="button" onclick="prevStep(1)" class="w-1/3 py-3.5 px-4 rounded-xl border border-slate-200 text-slate-600 font-bold text-xs sm:text-sm hover:bg-slate-50 transition">
                             Back
                         </button>
-                        <button type="button" onclick="nextStep(3)" class="w-2/3 btn-primary-gradient text-white font-bold text-base py-4 px-6 rounded-2xl flex items-center justify-center gap-2 shadow-md">
+                        <button type="button" onclick="nextStep(3)" class="w-2/3 btn-primary-gradient text-white font-bold text-sm sm:text-base py-3.5 px-5 rounded-xl flex items-center justify-center gap-2 shadow-md">
                             <span>Continue</span>
-                            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
                         </button>
                     </div>
                 </div>
 
-                <!-- STEP 3: PROFESSION & JOB DETAILS (Working Youth Only) -->
-                <div id="step-3" class="step-panel step-transition hidden space-y-5">
-                    <div class="flex items-center gap-3.5 pb-1">
-                        <div class="w-11 h-11 rounded-2xl bg-wisdomTeal/15 text-wisdomTeal flex items-center justify-center shrink-0">
+                <!-- STEP 3: PROFESSION & JOB DETAILS -->
+                <div id="step-3" class="step-panel step-transition hidden space-y-4">
+                    <div class="flex items-center gap-3 pb-2 border-b border-slate-100">
+                        <div class="w-10 h-10 rounded-xl bg-wisdomTeal/15 text-wisdomTeal flex items-center justify-center shrink-0">
                             <i data-lucide="briefcase" class="w-5 h-5"></i>
                         </div>
                         <div>
-                            <h2 class="text-lg font-extrabold text-slate-900 leading-tight">Profession &amp; Job Details</h2>
+                            <h2 class="text-base sm:text-lg font-extrabold text-slate-900 leading-tight">Profession &amp; Job Details</h2>
                             <p class="text-xs text-slate-500">Exclusively for working youth &amp; professionals</p>
                         </div>
                     </div>
 
                     <!-- Employment Sector -->
                     <div>
-                        <label class="block text-xs font-bold text-slate-700 mb-2">Employment Type <span class="text-rose-500">*</span></label>
-                        <div class="grid grid-cols-2 gap-2.5">
-                            <button type="button" data-cat="Private Sector" class="cat-btn py-3 px-3 rounded-2xl border-2 border-brandBlue-500 bg-brandBlue-500/5 text-brandBlue-600 font-bold text-xs sm:text-sm transition">Private Sector</button>
-                            <button type="button" data-cat="Government / PSU" class="cat-btn py-3 px-3 rounded-2xl border border-slate-200 bg-white text-slate-600 font-semibold text-xs sm:text-sm transition">Govt / PSU</button>
-                            <button type="button" data-cat="Business / Entrepreneur" class="cat-btn py-3 px-3 rounded-2xl border border-slate-200 bg-white text-slate-600 font-semibold text-xs sm:text-sm transition">Business</button>
-                            <button type="button" data-cat="Self-Employed / Freelance" class="cat-btn py-3 px-3 rounded-2xl border border-slate-200 bg-white text-slate-600 font-semibold text-xs sm:text-sm transition">Self-Employed</button>
+                        <label class="block text-xs font-bold text-slate-700 mb-1.5">Employment Sector <span class="text-rose-500">*</span></label>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button type="button" data-cat="Private Sector" class="cat-btn py-2.5 px-3 rounded-xl border-2 border-brandBlue-500 bg-brandBlue-500/5 text-brandBlue-600 font-bold text-xs sm:text-sm transition">Private Sector</button>
+                            <button type="button" data-cat="Government / PSU" class="cat-btn py-2.5 px-3 rounded-xl border border-slate-200 bg-white text-slate-600 font-semibold text-xs sm:text-sm transition">Govt / PSU</button>
+                            <button type="button" data-cat="Business / Entrepreneur" class="cat-btn py-2.5 px-3 rounded-xl border border-slate-200 bg-white text-slate-600 font-semibold text-xs sm:text-sm transition">Business</button>
+                            <button type="button" data-cat="Self-Employed / Freelance" class="cat-btn py-2.5 px-3 rounded-xl border border-slate-200 bg-white text-slate-600 font-semibold text-xs sm:text-sm transition">Self-Employed</button>
                         </div>
                         <input type="hidden" id="category" value="Private Sector">
                     </div>
 
-                    <!-- Job Title / Designation (Required) -->
+                    <!-- Job Title / Designation -->
                     <div>
-                        <label for="jobTitle" class="block text-xs font-bold text-slate-700 mb-1.5">Your Job / Designation <span class="text-rose-500">*</span></label>
-                        <input type="text" id="jobTitle" placeholder="e.g. Software Engineer, Teacher, Accountant, Sales Executive" class="w-full px-4 py-3.5 rounded-2xl border border-slate-200 focus:border-brandBlue-500 focus:ring-4 focus:ring-brandBlue-500/10 outline-none text-sm font-medium transition">
+                        <label for="jobTitle" class="block text-xs font-bold text-slate-700 mb-1">Your Job / Designation <span class="text-rose-500">*</span></label>
+                        <input type="text" id="jobTitle" placeholder="e.g. Software Engineer, Teacher, Accountant, Sales" class="w-full px-3.5 py-3 rounded-xl border border-slate-200 focus:border-brandBlue-500 focus:ring-3 focus:ring-brandBlue-500/10 outline-none text-sm font-medium transition">
                     </div>
 
                     <!-- Company / Workplace -->
                     <div>
-                        <label for="organization" class="block text-xs font-bold text-slate-700 mb-1.5">Company / Workplace <span class="text-slate-400 font-normal">(optional)</span></label>
-                        <input type="text" id="organization" placeholder="e.g. Cyberpark Calicut / Govt. Hospital / Own Firm" class="w-full px-4 py-3.5 rounded-2xl border border-slate-200 focus:border-brandBlue-500 outline-none text-sm font-medium transition">
+                        <label for="organization" class="block text-xs font-bold text-slate-700 mb-1">Company / Workplace <span class="text-slate-400 font-normal">(optional)</span></label>
+                        <input type="text" id="organization" placeholder="e.g. Cyberpark Calicut / Govt. Hospital / Own Firm" class="w-full px-3.5 py-3 rounded-xl border border-slate-200 focus:border-brandBlue-500 outline-none text-sm font-medium transition">
                     </div>
 
-                    <!-- Preferred Session Track -->
-                    <div>
-                        <label for="interestTrack" class="block text-xs font-bold text-slate-700 mb-1.5">Primary Interest Track</label>
-                        <select id="interestTrack" class="w-full px-4 py-3.5 rounded-2xl border border-slate-200 focus:border-brandBlue-500 outline-none text-sm font-medium bg-white transition">
-                            <option value="All Sessions">All Main Conference Sessions</option>
-                            <option value="Leadership & Social Action">Leadership &amp; Social Action</option>
-                            <option value="Career & Professional Ethics">Career &amp; Professional Ethics</option>
-                            <option value="Ideological & Moral Talks">Ideological &amp; Moral Talks</option>
-                        </select>
-                    </div>
-
-                    <div class="flex gap-3 pt-1">
-                        <button type="button" onclick="prevStep(2)" class="w-1/3 py-4 px-4 rounded-2xl border border-slate-200 text-slate-600 font-bold text-sm hover:bg-slate-50 transition">
+                    <div class="flex gap-2.5 pt-2">
+                        <button type="button" onclick="prevStep(2)" class="w-1/3 py-3.5 px-4 rounded-xl border border-slate-200 text-slate-600 font-bold text-xs sm:text-sm hover:bg-slate-50 transition">
                             Back
                         </button>
-                        <button type="button" onclick="nextStep(4)" class="w-2/3 btn-primary-gradient text-white font-bold text-base py-4 px-6 rounded-2xl flex items-center justify-center gap-2 shadow-md">
+                        <button type="button" onclick="nextStep(4)" class="w-2/3 btn-primary-gradient text-white font-bold text-sm sm:text-base py-3.5 px-5 rounded-xl flex items-center justify-center gap-2 shadow-md">
                             <span>Continue</span>
-                            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
                         </button>
                     </div>
                 </div>
 
                 <!-- STEP 4: ACCOMPANYING DELEGATES / FRIENDS -->
-                <div id="step-4" class="step-panel step-transition hidden space-y-5">
-                    <div class="flex items-center gap-3.5 pb-1">
-                        <div class="w-11 h-11 rounded-2xl bg-brandBlue-500/15 text-brandBlue-600 flex items-center justify-center shrink-0">
+                <div id="step-4" class="step-panel step-transition hidden space-y-4">
+                    <div class="flex items-center gap-3 pb-2 border-b border-slate-100">
+                        <div class="w-10 h-10 rounded-xl bg-brandBlue-500/10 text-brandBlue-600 flex items-center justify-center shrink-0">
                             <i data-lucide="users" class="w-5 h-5"></i>
                         </div>
                         <div>
-                            <h2 class="text-lg font-extrabold text-slate-900 leading-tight">Add Friends / Unit Members</h2>
-                            <p class="text-xs text-slate-500">Optional — register fellow working youth joining with you</p>
+                            <h2 class="text-base sm:text-lg font-extrabold text-slate-900 leading-tight">Add Friends / Unit Members</h2>
+                            <p class="text-xs text-slate-500">Optional — add fellow working youth joining with you</p>
                         </div>
                     </div>
 
                     <!-- Dynamic Companions List -->
-                    <div id="companions-list" class="space-y-3"></div>
+                    <div id="companions-list" class="space-y-2.5"></div>
 
-                    <button type="button" onclick="addCompanion()" class="w-full py-3.5 px-4 rounded-2xl border-2 border-dashed border-brandBlue-500/40 text-brandBlue-600 hover:bg-brandBlue-500/5 font-bold text-sm flex items-center justify-center gap-2 transition">
+                    <button type="button" onclick="addCompanion()" class="w-full py-3 px-4 rounded-xl border-2 border-dashed border-brandBlue-500/40 text-brandBlue-600 hover:bg-brandBlue-500/5 font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition">
                         <i data-lucide="user-plus" class="w-4 h-4"></i>
-                        <span>+ Add another youth delegate</span>
+                        <span>Add Another Youth Delegate</span>
                     </button>
 
-                    <div class="flex gap-3 pt-2">
-                        <button type="button" onclick="prevStep(3)" class="w-1/3 py-4 px-4 rounded-2xl border border-slate-200 text-slate-600 font-bold text-sm hover:bg-slate-50 transition">
+                    <div class="flex gap-2.5 pt-2">
+                        <button type="button" onclick="prevStep(3)" class="w-1/3 py-3.5 px-4 rounded-xl border border-slate-200 text-slate-600 font-bold text-xs sm:text-sm hover:bg-slate-50 transition">
                             Back
                         </button>
-                        <button type="button" onclick="nextStep(5)" class="w-2/3 btn-primary-gradient text-white font-bold text-base py-4 px-6 rounded-2xl flex items-center justify-center gap-2 shadow-md">
-                            <span>Continue</span>
-                            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        <button type="button" onclick="nextStep(5)" class="w-2/3 btn-primary-gradient text-white font-bold text-sm sm:text-base py-3.5 px-5 rounded-xl flex items-center justify-center gap-2 shadow-md">
+                            <span>Review Details</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
                         </button>
                     </div>
                 </div>
 
                 <!-- STEP 5: REVIEW & SUBMIT -->
-                <div id="step-5" class="step-panel step-transition hidden space-y-5">
-                    <div class="flex items-center gap-3.5 pb-1">
-                        <div class="w-11 h-11 rounded-2xl bg-emerald-500/15 text-emerald-600 flex items-center justify-center shrink-0">
+                <div id="step-5" class="step-panel step-transition hidden space-y-4">
+                    <div class="flex items-center gap-3 pb-2 border-b border-slate-100">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-600 flex items-center justify-center shrink-0">
                             <i data-lucide="clipboard-check" class="w-5 h-5"></i>
                         </div>
                         <div>
-                            <h2 class="text-lg font-extrabold text-slate-900 leading-tight">Review &amp; Confirm</h2>
-                            <p class="text-xs text-slate-500">Verify your details before submitting</p>
+                            <h2 class="text-base sm:text-lg font-extrabold text-slate-900 leading-tight">Review &amp; Confirm</h2>
+                            <p class="text-xs text-slate-500">Verify your details before final submission</p>
                         </div>
                     </div>
 
                     <!-- Summary Card -->
-                    <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200/80 space-y-2.5 text-xs sm:text-sm">
-                        <div class="flex justify-between py-1 border-b border-slate-200/60">
-                            <span class="text-slate-500">Full Name</span>
-                            <span id="rev-name" class="font-bold text-slate-900 text-right">-</span>
+                    <div class="bg-slate-50 rounded-xl p-3.5 sm:p-4 border border-slate-200/80 divide-y divide-slate-200/60 text-xs sm:text-sm">
+                        <div class="flex justify-between items-center py-2">
+                            <span class="text-slate-500">Full Name &amp; Age</span>
+                            <span id="rev-name-age" class="font-bold text-slate-900 text-right">-</span>
                         </div>
-                        <div class="flex justify-between py-1 border-b border-slate-200/60">
-                            <span class="text-slate-500">Gender &amp; Age</span>
-                            <span id="rev-gender-age" class="font-bold text-slate-900 text-right">-</span>
-                        </div>
-                        <div class="flex justify-between py-1 border-b border-slate-200/60">
+                        <div class="flex justify-between items-center py-2">
                             <span class="text-slate-500">Mobile / WhatsApp</span>
                             <span id="rev-mobile" class="font-bold text-slate-900 text-right">-</span>
                         </div>
-                        <div class="flex justify-between py-1 border-b border-slate-200/60">
-                            <span class="text-slate-500">Place &amp; PIN</span>
+                        <div class="flex justify-between items-center py-2">
+                            <span class="text-slate-500">Place / Town</span>
                             <span id="rev-place" class="font-bold text-slate-900 text-right">-</span>
                         </div>
-                        <div class="flex justify-between py-1 border-b border-slate-200/60">
+                        <div class="flex justify-between items-center py-2">
                             <span class="text-slate-500">Zone &amp; Unit</span>
                             <span id="rev-unit" class="font-bold text-slate-900 text-right">-</span>
                         </div>
-                        <div class="flex justify-between py-1 border-b border-slate-200/60">
+                        <div class="flex justify-between items-center py-2">
                             <span class="text-slate-500">Job &amp; Sector</span>
                             <span id="rev-job" class="font-bold text-slate-900 text-right">-</span>
                         </div>
-                        <div class="flex justify-between py-1 border-b border-slate-200/60">
+                        <div class="flex justify-between items-center py-2">
                             <span class="text-slate-500">Travel Mode</span>
                             <span id="rev-travel" class="font-bold text-slate-900 text-right">-</span>
                         </div>
-                        <div class="flex justify-between py-1">
+                        <div class="flex justify-between items-center pt-2">
                             <span class="text-slate-500">Total Delegates</span>
                             <span id="rev-count" class="font-extrabold text-brandBlue-600">1</span>
                         </div>
                     </div>
 
-                    <div class="flex gap-3 pt-1">
-                        <button type="button" onclick="prevStep(4)" class="w-1/3 py-4 px-4 rounded-2xl border border-slate-200 text-slate-600 font-bold text-sm hover:bg-slate-50 transition">
+                    <div class="flex gap-2.5 pt-2">
+                        <button type="button" onclick="prevStep(4)" class="w-1/3 py-3.5 px-4 rounded-xl border border-slate-200 text-slate-600 font-bold text-xs sm:text-sm hover:bg-slate-50 transition">
                             Back
                         </button>
-                        <button type="submit" id="submit-btn" class="w-2/3 btn-primary-gradient text-white font-bold text-base py-4 px-6 rounded-2xl flex items-center justify-center gap-2 shadow-lg">
-                            <span>Submit</span>
-                            <i data-lucide="check" class="w-5 h-5"></i>
+                        <button type="submit" id="submit-btn" class="w-2/3 btn-primary-gradient text-white font-bold text-sm sm:text-base py-3.5 px-5 rounded-xl flex items-center justify-center gap-2 shadow-lg">
+                            <span>Confirm &amp; Submit</span>
+                            <i data-lucide="check" class="w-4 h-4"></i>
                         </button>
                     </div>
                 </div>
 
                 <!-- SUCCESS SCREEN -->
-                <div id="success-screen" class="hidden text-center py-4 space-y-5 step-transition">
-                    <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto shadow-inner">
-                        <i data-lucide="check-circle-2" class="w-10 h-10"></i>
+                <div id="success-screen" class="hidden text-center py-3 space-y-4 step-transition">
+                    <div class="w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto shadow-inner">
+                        <i data-lucide="check-circle-2" class="w-8 h-8"></i>
                     </div>
                     <div>
-                        <span class="inline-block px-3 py-1 rounded-full bg-brandGold-500/20 text-brandGold-600 text-xs font-extrabold uppercase tracking-wider mb-2">Registration Confirmed</span>
-                        <h2 class="text-2xl font-black text-slate-900">See you at Ulliyeri!</h2>
-                        <p class="text-xs sm:text-sm text-slate-500 mt-1">Your registration for Kozhikode North District Youth Conference is recorded.</p>
+                        <span class="inline-block px-2.5 py-0.5 rounded-full bg-brandGold-500/20 text-brandGold-600 text-[11px] font-extrabold uppercase tracking-wider mb-1.5">Registration Confirmed</span>
+                        <h2 class="text-xl sm:text-2xl font-black text-slate-900">See you at Ulliyeri!</h2>
+                        <p class="text-xs text-slate-500 mt-1">Your delegate pass for Kozhikode North District Youth Conference is ready.</p>
                     </div>
 
                     <!-- Digital Delegate Pass Card -->
-                    <div class="bg-navy-900 text-white rounded-2xl p-5 text-left relative overflow-hidden shadow-xl">
-                        <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-3">
+                    <div class="bg-navy-900 text-white rounded-2xl p-4 sm:p-5 text-left relative overflow-hidden shadow-lg">
+                        <div class="flex items-center justify-between border-b border-white/10 pb-2.5 mb-2.5">
                             <span class="text-[10px] font-bold uppercase tracking-widest text-brandGold-400">DELEGATE PASS ID</span>
-                            <span id="pass-id" class="font-mono font-extrabold text-sm text-brandBlue-400">YS-0000</span>
+                            <span id="pass-id" class="font-mono font-extrabold text-sm text-brandBlue-400">YS-000000</span>
                         </div>
-                        <p id="pass-name" class="text-lg font-extrabold text-white">-</p>
+                        <p id="pass-name" class="text-base sm:text-lg font-extrabold text-white">-</p>
                         <p id="pass-unit" class="text-xs text-slate-300 mt-0.5">-</p>
-                        <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-300">
+                        <div class="mt-3.5 pt-2.5 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-300">
                             <span>27 Dec 2026 • 4:00 PM</span>
                             <span>Ulliyeri, Kozhikode</span>
                         </div>
                     </div>
 
-                    <div class="flex flex-col sm:flex-row gap-3 pt-2">
-                        <a href="index.html" class="w-full py-3.5 px-5 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-sm transition">
+                    <div class="flex flex-col sm:flex-row gap-2.5 pt-1">
+                        <a href="index.html" class="w-full py-3 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs sm:text-sm transition">
                             Back to Home
                         </a>
-                        <button type="button" onclick="location.reload()" class="w-full py-3.5 px-5 rounded-2xl btn-primary-gradient text-white font-bold text-sm shadow">
+                        <button type="button" onclick="location.reload()" class="w-full py-3 px-4 rounded-xl btn-primary-gradient text-white font-bold text-xs sm:text-sm shadow">
                             Register Another
                         </button>
                     </div>
@@ -457,27 +423,26 @@
         </div>
     </main>
 
-    <!-- DARK NAVY FOOTER -->
-    <footer class="bg-[#09182D] text-slate-300 py-10 px-4 border-t border-white/10 mt-10">
-        <div class="max-w-lg md:max-w-3xl mx-auto">
-            <div class="inline-block bg-white px-3.5 py-2 rounded-xl mb-4 shadow">
-                <img src="Wisdom youth.png" alt="Wisdom Youth" class="h-8 w-auto object-contain" onerror="this.onerror=null; this.src='https://placehold.co/110x35/00A3C4/FFFFFF?text=WISDOM+YOUTH';">
+    <!-- COMPACT DARK NAVY FOOTER -->
+    <footer class="bg-[#09182D] text-slate-300 py-8 px-4 border-t border-white/10 mt-8">
+        <div class="max-w-lg mx-auto">
+            <div class="inline-block bg-white px-3 py-1.5 rounded-lg mb-3 shadow">
+                <img src="Wisdom youth.png" alt="Wisdom Youth" class="h-7 w-auto object-contain" onerror="this.onerror=null; this.src='https://placehold.co/110x35/00A3C4/FFFFFF?text=WISDOM+YOUTH';">
             </div>
-            <h3 class="text-white font-extrabold text-lg leading-snug mb-1">
+            <h3 class="text-white font-extrabold text-base leading-snug mb-1">
                 Yuvajana Sammelanam • Kozhikode North District Youth Conference
             </h3>
-            <p class="text-xs sm:text-sm text-brandGold-400 font-medium mb-2">
+            <p class="text-xs text-brandGold-400 font-medium mb-1.5">
                 27 December 2026 • 4:00 PM • Ulliyeri, Kozhikode
             </p>
-            <p class="text-xs text-slate-400 leading-relaxed">
-                A district youth conference organized by Wisdom Youth Kozhikode North District for young professionals and working youth.
+            <p class="text-[11px] text-slate-400 leading-relaxed">
+                Organized by Wisdom Youth Kozhikode North District for young professionals and working youth.
             </p>
         </div>
     </footer>
 
-    <!-- Standard UI & Wizard Script (Works immediately even offline) -->
+    <!-- Standard UI & Wizard Script -->
     <script>
-        // Render all Lucide icons immediately
         if (window.lucide) {
             lucide.createIcons();
         }
@@ -526,13 +491,13 @@
             const text = document.getElementById('toast-message');
             text.textContent = msg;
             inner.className = isError
-                ? 'bg-rose-600 text-white px-4 py-3.5 rounded-2xl shadow-xl flex items-center gap-3 text-sm font-semibold'
-                : 'bg-emerald-600 text-white px-4 py-3.5 rounded-2xl shadow-xl flex items-center gap-3 text-sm font-semibold';
+                ? 'bg-rose-600 text-white px-4 py-3 rounded-2xl shadow-xl flex items-center gap-2.5 text-xs sm:text-sm font-semibold'
+                : 'bg-emerald-600 text-white px-4 py-3 rounded-2xl shadow-xl flex items-center gap-2.5 text-xs sm:text-sm font-semibold';
             box.classList.remove('hidden');
             setTimeout(() => box.classList.add('hidden'), 3500);
         };
 
-        // Selection Buttons Logic (Gender, Travel, Category)
+        // Toggle Button Groups (Travel & Sector)
         function setupToggleGroup(selector, hiddenInputId, dataAttr) {
             const buttons = document.querySelectorAll(selector);
             buttons.forEach(btn => {
@@ -547,7 +512,6 @@
                 });
             });
         }
-        setupToggleGroup('.gender-btn', 'gender', 'data-gender');
         setupToggleGroup('.travel-btn', 'travelMode', 'data-travel');
         setupToggleGroup('.cat-btn', 'category', 'data-cat');
 
@@ -562,25 +526,25 @@
             }
         });
 
-        // Dynamic Companions (Step 4) - Mobile Number & Job are REQUIRED
+        // Dynamic Companions (Step 4)
         let companionCount = 0;
         window.addCompanion = function() {
             companionCount++;
             const container = document.getElementById('companions-list');
             const card = document.createElement('div');
-            card.className = 'companion-card bg-slate-50 border border-slate-200 rounded-2xl p-4 space-y-3 relative';
+            card.className = 'companion-card bg-slate-50 border border-slate-200 rounded-xl p-3.5 space-y-2.5 relative';
             card.innerHTML = `
                 <div class="flex items-center justify-between">
-                    <span class="text-xs font-extrabold text-brandBlue-600 uppercase">Delegate #${companionCount + 1}</span>
+                    <span class="text-[11px] font-extrabold text-brandBlue-600 uppercase tracking-wide">Delegate #${companionCount + 1}</span>
                     <button type="button" onclick="this.closest('.companion-card').remove()" class="text-xs font-bold text-rose-500 hover:underline">Remove</button>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-                    <input type="text" placeholder="Full Name *" class="comp-name sm:col-span-2 px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-sm outline-none focus:border-brandBlue-500">
-                    <input type="number" placeholder="Age *" min="15" max="75" class="comp-age px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-sm outline-none focus:border-brandBlue-500">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                    <input type="text" placeholder="Full Name *" class="comp-name sm:col-span-2 px-3 py-2.5 rounded-lg border border-slate-200 bg-white text-sm outline-none focus:border-brandBlue-500">
+                    <input type="number" placeholder="Age *" min="15" max="75" class="comp-age px-3 py-2.5 rounded-lg border border-slate-200 bg-white text-sm outline-none focus:border-brandBlue-500">
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                    <input type="tel" maxlength="10" placeholder="10-digit Mobile Number *" class="comp-mobile px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-sm font-medium outline-none focus:border-brandBlue-500">
-                    <input type="text" placeholder="Job / Profession *" class="comp-job px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-sm outline-none focus:border-brandBlue-500">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    <input type="tel" maxlength="10" placeholder="10-digit Mobile *" class="comp-mobile px-3 py-2.5 rounded-lg border border-slate-200 bg-white text-sm font-medium outline-none focus:border-brandBlue-500">
+                    <input type="text" placeholder="Job / Profession *" class="comp-job px-3 py-2.5 rounded-lg border border-slate-200 bg-white text-sm outline-none focus:border-brandBlue-500">
                 </div>
             `;
             container.appendChild(card);
@@ -588,24 +552,24 @@
 
         // Stepper Navigation
         const stepNames = {
-            1: 'Personal',
+            1: 'Personal Details',
             2: 'Place & Unit',
             3: 'Profession',
-            4: 'Group',
+            4: 'Group Members',
             5: 'Confirm'
         };
 
         function updateStepperUI(step) {
             document.getElementById('step-counter').textContent = `Step ${step} of 5`;
             document.getElementById('step-label').textContent = stepNames[step];
-            document.getElementById('progress-line').style.width = `${((step - 1) / 4) * 100}%`;
+            document.getElementById('progress-line').style.width = `calc(${((step - 1) / 4) * 100}% - ${step === 5 ? '2rem' : '0rem'})`;
 
             document.querySelectorAll('.step-dot').forEach(dot => {
                 const s = parseInt(dot.getAttribute('data-step'), 10);
                 if (s <= step) {
-                    dot.className = 'step-dot relative z-10 w-10 h-10 rounded-full bg-navy-900 text-white flex items-center justify-center shadow-md transition-all';
+                    dot.className = 'step-dot relative z-10 w-9 h-9 rounded-full bg-navy-900 text-white flex items-center justify-center shadow-sm transition-all';
                 } else {
-                    dot.className = 'step-dot relative z-10 w-10 h-10 rounded-full bg-white border-2 border-slate-200 text-slate-400 flex items-center justify-center transition-all';
+                    dot.className = 'step-dot relative z-10 w-9 h-9 rounded-full bg-white border-2 border-slate-200 text-slate-400 flex items-center justify-center transition-all';
                 }
             });
 
@@ -620,26 +584,24 @@
                 const mobile = document.getElementById('mobile').value.trim();
                 const age = document.getElementById('age').value.trim();
                 if (!name) { showToast('Please enter your full name.'); return false; }
+                if (!age || age < 12 || age > 90) { showToast('Please enter a valid age.'); return false; }
                 if (!/^\d{10}$/.test(mobile)) { showToast('Please enter a valid 10-digit mobile number.'); return false; }
                 if (!sameWhatsappCheckbox.checked) {
                     const wa = document.getElementById('whatsappNumber').value.trim();
                     if (!/^\d{10}$/.test(wa)) { showToast('Please enter a valid 10-digit WhatsApp number.'); return false; }
                 }
-                if (!age || age < 12 || age > 90) { showToast('Please enter a valid age.'); return false; }
             }
             if (currentStep === 2) {
                 const place = document.getElementById('place').value.trim();
-                const pincode = document.getElementById('pincode').value.trim();
                 const zone = document.getElementById('zone').value;
                 const unit = document.getElementById('unit').value;
                 if (!place) { showToast('Please enter your place or town.'); return false; }
-                if (!/^\d{6}$/.test(pincode)) { showToast('Please enter a valid 6-digit PIN code.'); return false; }
                 if (!zone) { showToast('Please select your Zone.'); return false; }
                 if (!unit) { showToast('Please select your Wisdom Youth Unit.'); return false; }
             }
             if (currentStep === 3) {
                 const jobTitle = document.getElementById('jobTitle').value.trim();
-                if (!jobTitle) { showToast('Please type your Job / Profession.'); return false; }
+                if (!jobTitle) { showToast('Please enter your Job / Designation.'); return false; }
             }
             if (currentStep === 4) {
                 const compCards = document.querySelectorAll('.companion-card');
@@ -671,12 +633,10 @@
 
             if (targetStep === 5) {
                 const name = document.getElementById('fullName').value.trim();
-                const gender = document.getElementById('gender').value;
                 const age = document.getElementById('age').value.trim();
                 const mobile = document.getElementById('mobile').value.trim();
                 const wa = sameWhatsappCheckbox.checked ? mobile : document.getElementById('whatsappNumber').value.trim();
                 const place = document.getElementById('place').value.trim();
-                const pin = document.getElementById('pincode').value.trim();
                 const zone = document.getElementById('zone').value;
                 const unit = document.getElementById('unit').value;
                 const travel = document.getElementById('travelMode').value;
@@ -684,12 +644,11 @@
                 const job = document.getElementById('jobTitle').value.trim();
                 const extraCount = document.querySelectorAll('.companion-card').length;
 
-                document.getElementById('rev-name').textContent = name;
-                document.getElementById('rev-gender-age').textContent = `${gender}, ${age} yrs`;
+                document.getElementById('rev-name-age').textContent = `${name} (${age} yrs)`;
                 document.getElementById('rev-mobile').textContent = `+91 ${mobile} (WA: ${wa})`;
-                document.getElementById('rev-place').textContent = `${place} - ${pin}`;
+                document.getElementById('rev-place').textContent = place;
                 document.getElementById('rev-unit').textContent = `${unit} (${zone})`;
-                document.getElementById('rev-job').textContent = `${job} (${cat})`;
+                document.getElementById('rev-job').textContent = `${job} • ${cat}`;
                 document.getElementById('rev-travel').textContent = travel;
                 document.getElementById('rev-count').textContent = `${1 + extraCount} Delegate(s)`;
             }
@@ -708,7 +667,6 @@
         import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // Firebase Configuration (youth-146dc)
         const firebaseConfig = {
             apiKey: "AIzaSyDXZdG0gVdnNS8I0uVacb_6s2fSMM6j3kA",
             authDomain: "youth-146dc.firebaseapp.com",
@@ -751,20 +709,17 @@
                 const registrationData = {
                     passId: passCode,
                     fullName: document.getElementById('fullName').value.trim(),
-                    gender: document.getElementById('gender').value,
                     age: Number(document.getElementById('age').value.trim()),
                     mobile: mobileVal,
                     whatsapp: whatsappVal,
                     email: document.getElementById('email').value.trim() || '',
                     place: document.getElementById('place').value.trim(),
-                    pincode: document.getElementById('pincode').value.trim(),
                     zone: document.getElementById('zone').value,
                     unit: document.getElementById('unit').value,
                     travelMode: document.getElementById('travelMode').value,
                     category: document.getElementById('category').value,
                     jobTitle: document.getElementById('jobTitle').value.trim(),
                     organization: document.getElementById('organization').value.trim() || '',
-                    interestTrack: document.getElementById('interestTrack').value,
                     companions: companions,
                     totalDelegates: 1 + companions.length,
                     createdAt: serverTimestamp()
@@ -782,9 +737,9 @@
 
             } catch (error) {
                 console.error('Registration Error:', error);
-                window.showToast('Submission failed: ' + (error.message || 'Check Firestore rules & internet.'));
+                window.showToast('Submission failed: ' + (error.message || 'Check connection & try again.'));
                 submitBtn.disabled = false;
-                submitBtn.innerHTML = `<span>Submit Registration</span><i data-lucide="check" class="w-5 h-5"></i>`;
+                submitBtn.innerHTML = `<span>Confirm &amp; Submit</span><i data-lucide="check" class="w-4 h-4"></i>`;
                 if (window.lucide) lucide.createIcons();
             }
         });
