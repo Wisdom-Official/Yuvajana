@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- SheetJS (XLSX) for Excel File Export -->
+    <!-- SheetJS (XLSX) for Excel Export -->
     <script src="https://cdn.sheetjs.com/xlsx-0.20.2/package/dist/xlsx.full.min.js"></script>
 
     <script>
@@ -32,135 +32,135 @@
     </script>
     <style>
         .hero-bg {
-            background: radial-gradient(circle at 85% 20%, rgba(255, 193, 7, 0.18) 0%, transparent 45%),
+            background: radial-gradient(circle at 85% 20%, rgba(255, 193, 7, 0.16) 0%, transparent 45%),
                         linear-gradient(180deg, #091930 0%, #0F294D 100%);
         }
         .btn-primary-gradient {
-            background: linear-gradient(90deg, #0088D1 0%, #1976D2 45%, #F59E0B 100%);
+            background: linear-gradient(90deg, #0088D1 0%, #1976D2 48%, #F59E0B 100%);
         }
     </style>
 </head>
-<body class="bg-[#F4F7FA] text-slate-800 font-sans antialiased min-h-screen">
+<body class="bg-[#F3F6FA] text-slate-800 font-sans antialiased min-h-screen">
 
     <!-- PASSWORD LOCK SCREEN -->
     <div id="auth-gate" class="min-h-screen hero-bg flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl p-7 sm:p-8 max-w-md w-full shadow-2xl border border-white/20 text-center">
-            <div class="w-14 h-14 rounded-2xl bg-navy-900 text-brandGold-400 flex items-center justify-center mx-auto mb-4 shadow-lg">
-                <i data-lucide="shield-lock" class="w-7 h-7"></i>
+        <div class="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 max-w-sm w-full shadow-2xl border border-white/20 text-center">
+            <div class="w-12 h-12 rounded-xl bg-navy-900 text-brandGold-400 flex items-center justify-center mx-auto mb-3.5 shadow-md">
+                <i data-lucide="shield-lock" class="w-6 h-6"></i>
             </div>
-            <p class="text-[11px] font-bold tracking-widest text-brandBlue-600 uppercase mb-1">RESTRICTED ACCESS</p>
-            <h1 class="text-2xl font-black text-slate-900 mb-1">Controller Dashboard</h1>
-            <p class="text-xs sm:text-sm text-slate-500 mb-6">Enter the organizer password to view registrations and export Excel reports.</p>
+            <p class="text-[10px] font-extrabold tracking-widest text-brandBlue-600 uppercase mb-1">RESTRICTED ACCESS</p>
+            <h1 class="text-xl font-black text-slate-900 mb-1">Controller Dashboard</h1>
+            <p class="text-xs text-slate-500 mb-5">Enter organizer password to view delegates &amp; export Excel.</p>
 
-            <form id="login-form" class="space-y-4 text-left">
+            <form id="login-form" class="space-y-3.5 text-left">
                 <div>
-                    <label for="admin-password" class="block text-xs font-bold text-slate-700 mb-1.5">Controller Password</label>
+                    <label for="admin-password" class="block text-xs font-bold text-slate-700 mb-1">Controller Password</label>
                     <div class="relative">
-                        <input type="password" id="admin-password" placeholder="Enter password" class="w-full px-4 py-3.5 rounded-2xl border border-slate-200 focus:border-brandBlue-500 focus:ring-4 focus:ring-brandBlue-500/10 outline-none text-sm font-semibold pr-11">
-                        <button type="button" id="toggle-pwd" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">
+                        <input type="password" id="admin-password" placeholder="Enter password" class="w-full px-3.5 py-3 rounded-xl border border-slate-200 focus:border-brandBlue-500 focus:ring-3 focus:ring-brandBlue-500/10 outline-none text-sm font-semibold pr-10">
+                        <button type="button" id="toggle-pwd" class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">
                             <i data-lucide="eye" class="w-4 h-4"></i>
                         </button>
                     </div>
-                    <p id="login-error" class="hidden text-xs font-semibold text-rose-600 mt-2">Incorrect password. Please try again.</p>
+                    <p id="login-error" class="hidden text-xs font-semibold text-rose-600 mt-1.5">Incorrect password. Please try again.</p>
                 </div>
 
-                <button type="submit" class="w-full btn-primary-gradient text-white font-bold text-sm sm:text-base py-3.5 px-6 rounded-2xl shadow-lg hover:brightness-105 transition flex items-center justify-center gap-2">
+                <button type="submit" class="w-full btn-primary-gradient text-white font-bold text-sm py-3 px-5 rounded-xl shadow-md hover:brightness-105 transition flex items-center justify-center gap-2">
                     <i data-lucide="unlock" class="w-4 h-4"></i>
                     <span>Unlock Dashboard</span>
                 </button>
             </form>
 
-            <div class="mt-6 pt-4 border-t border-slate-100">
+            <div class="mt-5 pt-3.5 border-t border-slate-100">
                 <a href="index.html" class="text-xs font-bold text-slate-500 hover:text-brandBlue-600 inline-flex items-center gap-1">
                     <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
-                    <span>Return to Conference Home</span>
+                    <span>Back to Conference Home</span>
                 </a>
             </div>
         </div>
     </div>
 
-    <!-- MAIN DASHBOARD VIEW (Hidden until unlocked) -->
+    <!-- MAIN DASHBOARD VIEW -->
     <div id="dashboard-content" class="hidden">
         
         <!-- Top Header -->
-        <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm">
-            <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-3">
-                <div class="flex items-center gap-3">
-                    <img src="Mainlogo.png" alt="Logo" class="h-9 w-auto object-contain" onerror="this.onerror=null; this.src='https://placehold.co/120x40/0D213F/FFC107?text=YS+ADMIN';">
-                    <div class="hidden sm:block border-l border-slate-200 pl-3">
+        <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80">
+            <div class="max-w-7xl mx-auto px-4 h-14 flex items-center justify-between gap-3">
+                <div class="flex items-center gap-2.5">
+                    <img src="Mainlogo.png" alt="Logo" class="h-8 w-auto object-contain" onerror="this.onerror=null; this.src='https://placehold.co/120x40/0D213F/FFC107?text=YS+ADMIN';">
+                    <div class="hidden sm:block border-l border-slate-200 pl-2.5">
                         <h1 class="text-sm font-extrabold text-slate-900 leading-tight">Controller Dashboard</h1>
                         <p class="text-[11px] text-slate-500">Kozhikode North Youth Conference</p>
                     </div>
                 </div>
 
-                <div class="flex items-center gap-2.5">
-                    <button type="button" id="export-excel-btn" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl shadow-sm flex items-center gap-2 transition">
+                <div class="flex items-center gap-2">
+                    <button type="button" id="export-excel-btn" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-3.5 py-2 rounded-xl shadow-sm flex items-center gap-1.5 transition">
                         <i data-lucide="file-spreadsheet" class="w-4 h-4"></i>
-                        <span>Download Excel (.xlsx)</span>
+                        <span>Export Excel (.xlsx)</span>
                     </button>
-                    <button type="button" id="logout-btn" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold px-3 py-2.5 rounded-xl transition" title="Lock Dashboard">
+                    <button type="button" id="logout-btn" class="bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold p-2 rounded-xl transition" title="Lock Dashboard">
                         <i data-lucide="lock" class="w-4 h-4"></i>
                     </button>
                 </div>
             </div>
         </header>
 
-        <main class="max-w-7xl mx-auto px-4 py-6 space-y-6">
+        <main class="max-w-7xl mx-auto px-4 py-5 space-y-5">
 
             <!-- KPI Summary Cards -->
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-5">
-                <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100">
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="text-xs font-bold text-slate-400 uppercase">Total Delegates</span>
-                        <div class="w-9 h-9 rounded-xl bg-brandBlue-500/10 text-brandBlue-600 flex items-center justify-center">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+                <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-100">
+                    <div class="flex items-center justify-between mb-1.5">
+                        <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Total Delegates</span>
+                        <div class="w-8 h-8 rounded-lg bg-brandBlue-500/10 text-brandBlue-600 flex items-center justify-center">
                             <i data-lucide="users" class="w-4 h-4"></i>
                         </div>
                     </div>
-                    <p id="stat-total-delegates" class="text-2xl sm:text-3xl font-black text-slate-900">0</p>
-                    <p class="text-[11px] text-slate-500 mt-1">Including group members</p>
+                    <p id="stat-total-delegates" class="text-2xl font-black text-slate-900">0</p>
+                    <p class="text-[11px] text-slate-500 mt-0.5">Including group members</p>
                 </div>
 
-                <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100">
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="text-xs font-bold text-slate-400 uppercase">Registrations</span>
-                        <div class="w-9 h-9 rounded-xl bg-brandGold-500/15 text-brandGold-600 flex items-center justify-center">
+                <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-100">
+                    <div class="flex items-center justify-between mb-1.5">
+                        <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Registrations</span>
+                        <div class="w-8 h-8 rounded-lg bg-brandGold-500/15 text-brandGold-600 flex items-center justify-center">
                             <i data-lucide="file-check" class="w-4 h-4"></i>
                         </div>
                     </div>
-                    <p id="stat-total-forms" class="text-2xl sm:text-3xl font-black text-slate-900">0</p>
-                    <p class="text-[11px] text-slate-500 mt-1">Submitted forms</p>
+                    <p id="stat-total-forms" class="text-2xl font-black text-slate-900">0</p>
+                    <p class="text-[11px] text-slate-500 mt-0.5">Submitted entries</p>
                 </div>
 
-                <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100">
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="text-xs font-bold text-slate-400 uppercase">Male / Female</span>
-                        <div class="w-9 h-9 rounded-xl bg-wisdomTeal/15 text-wisdomTeal flex items-center justify-center">
-                            <i data-lucide="pie-chart" class="w-4 h-4"></i>
+                <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-100">
+                    <div class="flex items-center justify-between mb-1.5">
+                        <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Active Zones</span>
+                        <div class="w-8 h-8 rounded-lg bg-wisdomTeal/15 text-wisdomTeal flex items-center justify-center">
+                            <i data-lucide="map" class="w-4 h-4"></i>
                         </div>
                     </div>
-                    <p id="stat-gender" class="text-xl sm:text-2xl font-black text-slate-900">0 / 0</p>
-                    <p class="text-[11px] text-slate-500 mt-1">Primary registrants split</p>
+                    <p id="stat-zones" class="text-2xl font-black text-slate-900">0 / 8</p>
+                    <p class="text-[11px] text-slate-500 mt-0.5">Zones represented</p>
                 </div>
 
-                <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100">
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="text-xs font-bold text-slate-400 uppercase">Shared Bus / Van</span>
-                        <div class="w-9 h-9 rounded-xl bg-purple-500/10 text-purple-600 flex items-center justify-center">
+                <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-100">
+                    <div class="flex items-center justify-between mb-1.5">
+                        <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Shared Bus / Van</span>
+                        <div class="w-8 h-8 rounded-lg bg-purple-500/10 text-purple-600 flex items-center justify-center">
                             <i data-lucide="bus" class="w-4 h-4"></i>
                         </div>
                     </div>
-                    <p id="stat-bus" class="text-2xl sm:text-3xl font-black text-slate-900">0</p>
-                    <p class="text-[11px] text-slate-500 mt-1">Using group transport</p>
+                    <p id="stat-bus" class="text-2xl font-black text-slate-900">0</p>
+                    <p class="text-[11px] text-slate-500 mt-0.5">Group transport seats</p>
                 </div>
             </div>
 
             <!-- Filters & Search Bar -->
-            <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 flex flex-col md:flex-row gap-3">
+            <div class="bg-white rounded-2xl p-3.5 shadow-sm border border-slate-100 flex flex-col md:flex-row gap-2.5">
                 <div class="relative flex-1">
-                    <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
-                    <input type="text" id="search-input" placeholder="Search by name, mobile, job, pass ID, place, or unit..." class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 focus:border-brandBlue-500 outline-none text-sm">
+                    <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+                    <input type="text" id="search-input" placeholder="Search name, mobile, job, pass ID, place, or unit..." class="w-full pl-9 pr-3.5 py-2 rounded-xl border border-slate-200 focus:border-brandBlue-500 outline-none text-xs sm:text-sm">
                 </div>
-                <select id="filter-zone" class="px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-sm font-medium text-slate-700 outline-none focus:border-brandBlue-500">
+                <select id="filter-zone" class="px-3 py-2 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm font-medium text-slate-700 outline-none focus:border-brandBlue-500">
                     <option value="ALL">All Zones</option>
                     <option value="VATAKARA">VATAKARA</option>
                     <option value="BALUSSERRY">BALUSSERRY</option>
@@ -171,7 +171,7 @@
                     <option value="PERAMBRA">PERAMBRA</option>
                     <option value="KUTTIYADI">KUTTIYADI</option>
                 </select>
-                <select id="filter-category" class="px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white text-sm font-medium text-slate-700 outline-none focus:border-brandBlue-500">
+                <select id="filter-category" class="px-3 py-2 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm font-medium text-slate-700 outline-none focus:border-brandBlue-500">
                     <option value="ALL">All Sectors</option>
                     <option value="Private Sector">Private Sector</option>
                     <option value="Government / PSU">Government / PSU</option>
@@ -181,11 +181,11 @@
             </div>
 
             <!-- Data Table Card -->
-            <div class="bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden">
-                <div class="px-5 py-4 border-b border-slate-100 flex items-center justify-between">
-                    <h2 class="font-extrabold text-slate-900 text-base">Registered Delegates</h2>
-                    <span id="live-indicator" class="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full">
-                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                <div class="px-4 py-3.5 border-b border-slate-100 flex items-center justify-between">
+                    <h2 class="font-extrabold text-slate-900 text-sm sm:text-base">Registered Delegates</h2>
+                    <span id="live-indicator" class="inline-flex items-center gap-1.5 text-[11px] font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                         Live Sync
                     </span>
                 </div>
@@ -193,20 +193,20 @@
                 <div class="overflow-x-auto">
                     <table class="w-full text-left border-collapse">
                         <thead>
-                            <tr class="bg-slate-50/80 text-[11px] font-bold uppercase tracking-wider text-slate-500 border-b border-slate-100">
-                                <th class="py-3.5 px-4">Pass ID</th>
-                                <th class="py-3.5 px-4">Delegate Name</th>
-                                <th class="py-3.5 px-4">Mobile / WA</th>
-                                <th class="py-3.5 px-4">Zone &amp; Unit</th>
-                                <th class="py-3.5 px-4">Job / Profession</th>
-                                <th class="py-3.5 px-4">Travel</th>
-                                <th class="py-3.5 px-4 text-center">Count</th>
-                                <th class="py-3.5 px-4 text-right">Details</th>
+                            <tr class="bg-slate-50/90 text-[11px] font-bold uppercase tracking-wider text-slate-500 border-b border-slate-100">
+                                <th class="py-3 px-4">Pass ID</th>
+                                <th class="py-3 px-4">Delegate</th>
+                                <th class="py-3 px-4">Mobile / WA</th>
+                                <th class="py-3 px-4">Zone &amp; Unit</th>
+                                <th class="py-3 px-4">Job / Profession</th>
+                                <th class="py-3 px-4">Travel</th>
+                                <th class="py-3 px-4 text-center">Count</th>
+                                <th class="py-3 px-4 text-right">Action</th>
                             </tr>
                         </thead>
-                        <tbody id="registrations-tbody" class="divide-y divide-slate-100 text-sm">
+                        <tbody id="registrations-tbody" class="divide-y divide-slate-100 text-xs sm:text-sm">
                             <tr>
-                                <td colspan="8" class="py-10 text-center text-slate-400 text-sm">Loading registrations from database...</td>
+                                <td colspan="8" class="py-8 text-center text-slate-400">Loading registrations...</td>
                             </tr>
                         </tbody>
                     </table>
@@ -218,13 +218,13 @@
 
     <!-- Detail View Modal -->
     <div id="detail-modal" class="fixed inset-0 z-50 bg-navy-950/60 backdrop-blur-sm hidden items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl max-h-[90vh] overflow-y-auto">
-            <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-5 shadow-2xl max-h-[88vh] overflow-y-auto">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-3.5">
                 <div>
-                    <span id="modal-pass-id" class="text-xs font-mono font-bold text-brandBlue-600">YS-000000</span>
-                    <h3 id="modal-name" class="text-lg font-extrabold text-slate-900">Delegate Name</h3>
+                    <span id="modal-pass-id" class="text-[11px] font-mono font-bold text-brandBlue-600">YS-000000</span>
+                    <h3 id="modal-name" class="text-base sm:text-lg font-extrabold text-slate-900">Delegate Name</h3>
                 </div>
-                <button type="button" onclick="closeDetailModal()" class="w-9 h-9 rounded-xl bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600">
+                <button type="button" onclick="closeDetailModal()" class="w-8 h-8 rounded-lg bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600">
                     <i data-lucide="x" class="w-4 h-4"></i>
                 </button>
             </div>
@@ -238,7 +238,6 @@
         import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // Updated User Provided Firebase Configuration (youth-146dc)
         const firebaseConfig = {
             apiKey: "AIzaSyDXZdG0gVdnNS8I0uVacb_6s2fSMM6j3kA",
             authDomain: "youth-146dc.firebaseapp.com",
@@ -308,7 +307,6 @@
                         items.push({ id: doc.id, ...doc.data() });
                     });
 
-                    // Sort newest first in memory
                     items.sort((a, b) => {
                         const tA = a.createdAt?.seconds || 0;
                         const tB = b.createdAt?.seconds || 0;
@@ -331,20 +329,18 @@
 
         function updateStats() {
             let totalDelegates = 0;
-            let maleCount = 0;
-            let femaleCount = 0;
             let busCount = 0;
+            const activeZones = new Set();
 
             allRegistrations.forEach(r => {
                 totalDelegates += Number(r.totalDelegates || 1);
-                if (r.gender === 'Male') maleCount++;
-                if (r.gender === 'Female') femaleCount++;
+                if (r.zone) activeZones.add(r.zone);
                 if (r.travelMode === 'Shared bus / van') busCount += Number(r.totalDelegates || 1);
             });
 
             document.getElementById('stat-total-delegates').textContent = totalDelegates;
             document.getElementById('stat-total-forms').textContent = allRegistrations.length;
-            document.getElementById('stat-gender').textContent = `${maleCount} / ${femaleCount}`;
+            document.getElementById('stat-zones').textContent = `${activeZones.size} / 8`;
             document.getElementById('stat-bus').textContent = busCount;
         }
 
@@ -372,35 +368,35 @@
         function renderTable() {
             const tbody = document.getElementById('registrations-tbody');
             if (filteredRegistrations.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="8" class="py-10 text-center text-slate-400">No matching registrations found.</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="8" class="py-8 text-center text-slate-400">No matching registrations found.</td></tr>`;
                 return;
             }
 
             tbody.innerHTML = filteredRegistrations.map((r, idx) => `
                 <tr class="hover:bg-slate-50/90 transition">
-                    <td class="py-3.5 px-4 font-mono text-xs font-bold text-brandBlue-600 whitespace-nowrap">${r.passId || '-'}</td>
-                    <td class="py-3.5 px-4">
+                    <td class="py-3 px-4 font-mono text-xs font-bold text-brandBlue-600 whitespace-nowrap">${r.passId || '-'}</td>
+                    <td class="py-3 px-4">
                         <p class="font-bold text-slate-900">${escapeHtml(r.fullName || '-')}</p>
-                        <p class="text-xs text-slate-500">${escapeHtml(r.gender || '')} • ${r.age || '-'} yrs</p>
+                        <p class="text-[11px] text-slate-500">Age: ${r.age || '-'} yrs</p>
                     </td>
-                    <td class="py-3.5 px-4 whitespace-nowrap">
+                    <td class="py-3 px-4 whitespace-nowrap">
                         <p class="font-semibold text-slate-800">${escapeHtml(r.mobile || '-')}</p>
                         <p class="text-[11px] text-emerald-600">WA: ${escapeHtml(r.whatsapp || '-')}</p>
                     </td>
-                    <td class="py-3.5 px-4">
+                    <td class="py-3 px-4">
                         <p class="font-semibold text-slate-800">${escapeHtml(r.unit || '-')}</p>
-                        <p class="text-xs text-slate-500">${escapeHtml(r.zone || '-')} • ${escapeHtml(r.place || '-')}</p>
+                        <p class="text-[11px] text-slate-500">${escapeHtml(r.zone || '-')} • ${escapeHtml(r.place || '-')}</p>
                     </td>
-                    <td class="py-3.5 px-4">
+                    <td class="py-3 px-4">
                         <p class="font-bold text-slate-800 text-xs">${escapeHtml(r.jobTitle || '-')}</p>
                         <span class="inline-block mt-0.5 px-2 py-0.5 rounded bg-slate-100 text-slate-600 text-[10px] font-semibold">${escapeHtml(r.category || '-')}</span>
                     </td>
-                    <td class="py-3.5 px-4 text-xs text-slate-600 whitespace-nowrap">${escapeHtml(r.travelMode || '-')}</td>
-                    <td class="py-3.5 px-4 text-center">
-                        <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-brandBlue-500/10 text-brandBlue-600 font-extrabold text-xs">${r.totalDelegates || 1}</span>
+                    <td class="py-3 px-4 text-xs text-slate-600 whitespace-nowrap">${escapeHtml(r.travelMode || '-')}</td>
+                    <td class="py-3 px-4 text-center">
+                        <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-brandBlue-500/10 text-brandBlue-600 font-extrabold text-xs">${r.totalDelegates || 1}</span>
                     </td>
-                    <td class="py-3.5 px-4 text-right">
-                        <button type="button" onclick="openDetailModal(${idx})" class="px-3 py-1.5 rounded-xl bg-navy-900 hover:bg-navy-800 text-white text-xs font-bold transition">
+                    <td class="py-3 px-4 text-right">
+                        <button type="button" onclick="openDetailModal(${idx})" class="px-2.5 py-1 rounded-lg bg-navy-900 hover:bg-navy-800 text-white text-xs font-bold transition">
                             View
                         </button>
                     </td>
@@ -427,7 +423,7 @@
             if (Array.isArray(r.companions) && r.companions.length > 0) {
                 companionsHtml = `
                     <div class="pt-3 border-t border-slate-100">
-                        <p class="text-xs font-bold uppercase text-slate-400 mb-2">Accompanying Delegates (${r.companions.length})</p>
+                        <p class="text-[11px] font-bold uppercase text-slate-400 mb-2">Accompanying Delegates (${r.companions.length})</p>
                         <div class="space-y-1.5">
                             ${r.companions.map((c, i) => `
                                 <div class="bg-slate-50 p-2.5 rounded-xl flex justify-between items-center text-xs">
@@ -444,17 +440,17 @@
             }
 
             document.getElementById('modal-body').innerHTML = `
-                <div class="grid grid-cols-2 gap-2 bg-slate-50 p-3.5 rounded-2xl">
-                    <div><span class="text-slate-400 block text-[11px]">Gender &amp; Age</span><strong>${escapeHtml(r.gender)} • ${r.age} yrs</strong></div>
-                    <div><span class="text-slate-400 block text-[11px]">Mobile</span><strong>${escapeHtml(r.mobile)}</strong></div>
-                    <div><span class="text-slate-400 block text-[11px]">WhatsApp</span><strong>${escapeHtml(r.whatsapp)}</strong></div>
+                <div class="grid grid-cols-2 gap-2.5 bg-slate-50 p-3 rounded-xl">
+                    <div><span class="text-slate-400 block text-[11px]">Age</span><strong>${r.age || '-'} yrs</strong></div>
+                    <div><span class="text-slate-400 block text-[11px]">Mobile</span><strong>${escapeHtml(r.mobile || '-')}</strong></div>
+                    <div><span class="text-slate-400 block text-[11px]">WhatsApp</span><strong>${escapeHtml(r.whatsapp || '-')}</strong></div>
                     <div><span class="text-slate-400 block text-[11px]">Email</span><strong>${escapeHtml(r.email || 'N/A')}</strong></div>
-                    <div><span class="text-slate-400 block text-[11px]">Place &amp; PIN</span><strong>${escapeHtml(r.place)} - ${escapeHtml(r.pincode)}</strong></div>
-                    <div><span class="text-slate-400 block text-[11px]">Zone</span><strong>${escapeHtml(r.zone)}</strong></div>
-                    <div><span class="text-slate-400 block text-[11px]">Unit</span><strong>${escapeHtml(r.unit)}</strong></div>
-                    <div><span class="text-slate-400 block text-[11px]">Travel Mode</span><strong>${escapeHtml(r.travelMode)}</strong></div>
+                    <div><span class="text-slate-400 block text-[11px]">Place / Town</span><strong>${escapeHtml(r.place || '-')}</strong></div>
+                    <div><span class="text-slate-400 block text-[11px]">Zone</span><strong>${escapeHtml(r.zone || '-')}</strong></div>
+                    <div><span class="text-slate-400 block text-[11px]">Unit</span><strong>${escapeHtml(r.unit || '-')}</strong></div>
+                    <div><span class="text-slate-400 block text-[11px]">Travel Mode</span><strong>${escapeHtml(r.travelMode || '-')}</strong></div>
                     <div><span class="text-slate-400 block text-[11px]">Job / Profession</span><strong>${escapeHtml(r.jobTitle || '-')}</strong></div>
-                    <div><span class="text-slate-400 block text-[11px]">Sector</span><strong>${escapeHtml(r.category)}</strong></div>
+                    <div><span class="text-slate-400 block text-[11px]">Sector</span><strong>${escapeHtml(r.category || '-')}</strong></div>
                     <div class="col-span-2"><span class="text-slate-400 block text-[11px]">Company / Workplace</span><strong>${escapeHtml(r.organization || 'N/A')}</strong></div>
                 </div>
                 ${companionsHtml}
@@ -478,50 +474,42 @@
             const rows = [];
             filteredRegistrations.forEach(r => {
                 const dateStr = r.createdAt?.seconds ? new Date(r.createdAt.seconds * 1000).toLocaleString('en-IN') : '';
-                // Primary Registrant Row
                 rows.push({
                     'Pass ID': r.passId || '',
                     'Delegate Type': 'Primary',
                     'Full Name': r.fullName || '',
-                    'Gender': r.gender || '',
                     'Age': r.age || '',
                     'Mobile': r.mobile || '',
                     'WhatsApp': r.whatsapp || '',
                     'Email': r.email || '',
                     'Place': r.place || '',
-                    'PIN Code': r.pincode || '',
                     'Zone': r.zone || '',
                     'Wisdom Youth Unit': r.unit || '',
                     'Travel Mode': r.travelMode || '',
                     'Employment Sector': r.category || '',
                     'Job / Profession': r.jobTitle || '',
                     'Company / Workplace': r.organization || '',
-                    'Interest Track': r.interestTrack || '',
                     'Group Size': r.totalDelegates || 1,
                     'Registered At': dateStr
                 });
 
-                // Include accompanying delegates as individual rows in Excel for complete attendance sheet
                 if (Array.isArray(r.companions)) {
                     r.companions.forEach(c => {
                         rows.push({
                             'Pass ID': r.passId || '',
                             'Delegate Type': 'Group Member',
                             'Full Name': c.name || '',
-                            'Gender': '-',
                             'Age': c.age || '',
                             'Mobile': c.mobile || '',
                             'WhatsApp': c.mobile || r.whatsapp || '',
                             'Email': '',
                             'Place': r.place || '',
-                            'PIN Code': r.pincode || '',
                             'Zone': r.zone || '',
                             'Wisdom Youth Unit': r.unit || '',
                             'Travel Mode': r.travelMode || '',
                             'Employment Sector': 'Group Member',
                             'Job / Profession': c.job || '',
                             'Company / Workplace': '',
-                            'Interest Track': r.interestTrack || '',
                             'Group Size': '',
                             'Registered At': dateStr
                         });
